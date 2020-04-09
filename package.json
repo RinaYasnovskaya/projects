@@ -1,0 +1,28 @@
+{
+  "name": "english-for-kids",
+  "version": "1.0.0",
+  "description": "english-for-kids",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RinaYasnovskaya/english-for-kids.git"
+  },
+  "keywords": [
+    "html",
+    "css"
+  ],
+  "author": "RinaYasnovskaya <rina.yasnovskaya@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RinaYasnovskaya/english-for-kids/issues"
+  },
+  "homepage": "https://github.com/RinaYasnovskaya/english-for-kids#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2"
+  }
+}
