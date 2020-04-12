@@ -1,0 +1,88 @@
+span {
+  position: relative;
+  width: 150px;
+  height: 40px;
+  border-radius: 15px;
+  margin: 20px 0;
+  input {
+     -webkit-appearance: none;
+     position: relative;
+     width: 150px;
+     height: 40px;
+     border-radius: 15px;
+     font-size: 1.8em;
+     font-weight: bold;
+     background-color: $color-switch-train;
+     outline:none;
+     &:before, &:after {
+        z-index: 2;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $color-switch-play;
+     }
+     &:before {
+        content: 'PLAY';
+        left: 20px;
+     }
+     &:after {
+        content: 'TRAIN';
+        right: 20px;
+     }
+  }
+  label {
+     z-index: 1;
+     position: absolute;
+     top: 10px;
+     bottom: 10px;
+     border-radius: 15px;
+  }
+  &.switcher {
+     overflow: hidden;
+     input {
+        transition: background-color 0s .5s;
+        &:before {
+           color: $color-switch-play;
+        }
+        &:after {
+           color: $color-switch-train;
+        }
+        &:checked {
+           background-color: $color-switch-train;
+           &+label {
+              background: $color-switch-train;
+              animation: turn-on .5s ease-out;
+              @keyframes turn-on {
+                 0% {
+                    left: 100%;
+                 }
+                 100% {
+                    left: 0%;
+                 }
+              }
+           }
+        }
+        &:not(:checked) {
+           background: $color-switch-play;
+           &+label {
+              background: $color-switch-play;
+              animation: turn-off .5s ease-out;
+              @keyframes turn-off {
+                 0% {
+                    right: 100%;
+                 }
+                 100% {
+                    right: 0%;
+                 }
+              }
+           }
+        }
+     }
+     label {
+        top: 0px;
+        width: 150px;
+        height: 40px;
+        border-radius: 15px;
+     }
+  }
+}

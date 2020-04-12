@@ -6,10 +6,10 @@
     <title>English for kids</title>
 </head>
 <body>
-  <div class="wrapper">
-    <header class="header">
+  <header class="header">
+    <div class="header__wrapper">
         <nav class="navigation">
-          <div class="burger">
+          <div class="burger" style="display: none;">
             <span></span>
             <ul class="menu">
               <a class="menu-item active">Main Page</a>
@@ -24,137 +24,139 @@
             </ul>
           </div>
         </nav>
-        <div class="switch">
-        </div>
-    </header>
-    <section class="cards-list">
-      <div class="cards-category" style="display: none;">
-        <div class="wrapper-inner">
-          <a class="card-main" href="">
-            <img src="./img/dance.jpg" alt="Action (set A)">Action (set A)
-          </a>
-          <a class="card-main" href="">
-            <img src="./img/open.jpg" alt="Action (set B)">Action (set B)
-          </a>
-          <a class="card-main" href="">
-            <img src="./img/argue.jpg" alt="Action (set C)">Action (set C)
-          </a>
-          <a class="card-main" href="">
-            <img src="./img/big.jpg" alt="Adjective">Adjective
-          </a>
-          <a class="card-main" href="">
-            <img src="./img/cat.jpg" alt="Animal (set A)">Animal (set A)
-          </a>
-          <a class="card-main" href="">
-            <img src="./img/bird.jpg" alt="Animal (set B)">Animal (set B)
-          </a>
-          <a class="card-main" href="">
-            <img src="./img/skirt.jpg" alt="Clothes">Clothes
-          </a>
-          <a class="card-main" href="">
-            <img src="./img/sad.jpg" alt="Emotion">Emotion
-          </a>
-        </div>
+          <span class="switcher">
+            <input type="checkbox" id="switcher">
+            <label for="switcher"></label>
+         </span>
+    </div>
+  </header>
+  <section class="cards-list">
+    <div class="cards-category" style="">
+      <div class="category__wrapper">
+        <a class="card-main" href="">
+          <img src="./img/dance.jpg" alt="Action (set A)">Action (set A)
+        </a>
+        <a class="card-main" href="">
+          <img src="./img/open.jpg" alt="Action (set B)">Action (set B)
+        </a>
+        <a class="card-main" href="">
+          <img src="./img/argue.jpg" alt="Action (set C)">Action (set C)
+        </a>
+        <a class="card-main" href="">
+          <img src="./img/big.jpg" alt="Adjective">Adjective
+        </a>
+        <a class="card-main" href="">
+          <img src="./img/cat.jpg" alt="Animal (set A)">Animal (set A)
+        </a>
+        <a class="card-main" href="">
+          <img src="./img/bird.jpg" alt="Animal (set B)">Animal (set B)
+        </a>
+        <a class="card-main" href="">
+          <img src="./img/skirt.jpg" alt="Clothes">Clothes
+        </a>
+        <a class="card-main" href="">
+          <img src="./img/sad.jpg" alt="Emotion">Emotion
+        </a>
       </div>
-      <div class="cards-vocabulary">
-        <div class="wrapper-inner">
-          <div class="card-wrap">
-            <div class="card">
-              <div class="before" style="background-image: url();">
-                <div class="card-name hidden">cry</div>
-              </div>
-              <div class="after" style="background-image: url();">
-                <div class="card-name hidden">плакать</div>
-              </div>
-              <div class="rotate hidden"></div>
+    </div>
+    <div class="cards-vocabulary" style="display: none;">
+      <div class="vocabulary__wrapper">
+        <div class="card-wrap">
+          <div class="card">
+            <div class="before" style="background-image: url();">
+              <div class="card-name hidden">cry</div>
             </div>
-          </div>
-          <div class="card-wrap">
-            <div class="card">
-              <div class="before" style="background-image: url();">
-                <div class="card-name hidden">dance</div>
-              </div>
-              <div class="after" style="background-image: url();">
-                <div class="card-name hidden">танцевать</div>
-              </div>
-              <div class="rotate hidden"></div>
+            <div class="after" style="background-image: url();">
+              <div class="card-name hidden">плакать</div>
             </div>
+            <div class="rotate hidden"></div>
           </div>
-          <div class="card-wrap">
-            <div class="card">
-              <div class="before" style="background-image: url();">
-                <div class="card-name hidden">dive</div>
-              </div>
-              <div class="after" style="background-image: url(&quot;/static/media/dive.41b7d509.jpg&quot;);">
-                <div class="card-name hidden">нырять</div>
-              </div>
-              <div class="rotate hidden"></div>
-            </div>
-          </div>
-          <div class="card-wrap">
-            <div class="card">
-              <div class="before" style="background-image: url(&quot;/static/media/draw.82be9665.jpg&quot;);">
-                <div class="card-name hidden">draw</div>
-              </div>
-              <div class="after" style="background-image: url(&quot;/static/media/draw.82be9665.jpg&quot;);">
-                <div class="card-name hidden">рисовать</div>
-              </div>
-              <div class="rotate hidden"></div>
-            </div>
-          </div>
-          <div class="card-wrap">
-            <div class="card">
-              <div class="before" style="background-image: url(&quot;/static/media/fish.27eb7746.jpg&quot;);">
-                <div class="card-name hidden">fish</div>
-              </div>
-              <div class="after" style="background-image: url(&quot;/static/media/fish.27eb7746.jpg&quot;);">
-                <div class="card-name hidden">ловить рыбу</div>
-              </div>
-              <div class="rotate hidden"></div>
-            </div>
-          </div>
-          <div class="card-wrap">
-            <div class="card">
-              <div class="before" style="background-image: url(&quot;/static/media/fly.6122fa03.jpg&quot;);">
-                <div class="card-name hidden">fly</div>
-              </div>
-              <div class="after" style="background-image: url(&quot;/static/media/fly.6122fa03.jpg&quot;);">
-                <div class="card-name hidden">летать</div>
-              </div>
-              <div class="rotate hidden"></div>
-            </div>
-          </div>
-          <div class="card-wrap">
-            <div class="card">
-              <div class="before" style="background-image: url(&quot;/static/media/hug.9dda3c46.jpg&quot;);">
-                <div class="card-name hidden">hug</div>
-              </div>
-              <div class="after" style="background-image: url(&quot;/static/media/hug.9dda3c46.jpg&quot;);">
-                <div class="card-name hidden">обнимать</div>
-              </div>
-              <div class="rotate hidden"></div>
-            </div>
-          </div>
-          <div class="card-wrap">
-            <div class="card">
-              <div class="before" style="background-image: url(&quot;/static/media/jump.ac945820.jpg&quot;);">
-                <div class="card-name hidden">jump</div>
-              </div>
-              <div class="after" style="background-image: url(&quot;/static/media/jump.ac945820.jpg&quot;);">
-                <div class="card-name hidden">прыгать</div>
-              </div>
-              <div class="rotate hidden"></div>
-            </div>
-          </div>
-          <div class="button-start">
-            <button class="button">Start game</button>
-          </div>
-          <audio class="audio"></audio>
-          <audio class="audioEffect"></audio>
         </div>
+        <div class="card-wrap">
+          <div class="card">
+            <div class="before" style="background-image: url();">
+              <div class="card-name hidden">dance</div>
+            </div>
+            <div class="after" style="background-image: url();">
+              <div class="card-name hidden">танцевать</div>
+            </div>
+            <div class="rotate hidden"></div>
+          </div>
+        </div>
+        <div class="card-wrap">
+          <div class="card">
+            <div class="before" style="background-image: url();">
+              <div class="card-name hidden">dive</div>
+            </div>
+            <div class="after" style="background-image: url(&quot;/static/media/dive.41b7d509.jpg&quot;);">
+              <div class="card-name hidden">нырять</div>
+            </div>
+            <div class="rotate hidden"></div>
+          </div>
+        </div>
+        <div class="card-wrap">
+          <div class="card">
+            <div class="before" style="background-image: url(&quot;/static/media/draw.82be9665.jpg&quot;);">
+              <div class="card-name hidden">draw</div>
+            </div>
+            <div class="after" style="background-image: url(&quot;/static/media/draw.82be9665.jpg&quot;);">
+              <div class="card-name hidden">рисовать</div>
+            </div>
+            <div class="rotate hidden"></div>
+          </div>
+        </div>
+        <div class="card-wrap">
+          <div class="card">
+            <div class="before" style="background-image: url(&quot;/static/media/fish.27eb7746.jpg&quot;);">
+              <div class="card-name hidden">fish</div>
+            </div>
+            <div class="after" style="background-image: url(&quot;/static/media/fish.27eb7746.jpg&quot;);">
+              <div class="card-name hidden">ловить рыбу</div>
+            </div>
+            <div class="rotate hidden"></div>
+          </div>
+        </div>
+        <div class="card-wrap">
+          <div class="card">
+            <div class="before" style="background-image: url(&quot;/static/media/fly.6122fa03.jpg&quot;);">
+              <div class="card-name hidden">fly</div>
+            </div>
+            <div class="after" style="background-image: url(&quot;/static/media/fly.6122fa03.jpg&quot;);">
+              <div class="card-name hidden">летать</div>
+            </div>
+            <div class="rotate hidden"></div>
+          </div>
+        </div>
+        <div class="card-wrap">
+          <div class="card">
+            <div class="before" style="background-image: url(&quot;/static/media/hug.9dda3c46.jpg&quot;);">
+              <div class="card-name hidden">hug</div>
+            </div>
+            <div class="after" style="background-image: url(&quot;/static/media/hug.9dda3c46.jpg&quot;);">
+              <div class="card-name hidden">обнимать</div>
+            </div>
+            <div class="rotate hidden"></div>
+          </div>
+        </div>
+        <div class="card-wrap">
+          <div class="card">
+            <div class="before" style="background-image: url(&quot;/static/media/jump.ac945820.jpg&quot;);">
+              <div class="card-name hidden">jump</div>
+            </div>
+            <div class="after" style="background-image: url(&quot;/static/media/jump.ac945820.jpg&quot;);">
+              <div class="card-name hidden">прыгать</div>
+            </div>
+            <div class="rotate hidden"></div>
+          </div>
+        </div>
+        <div class="button-start">
+          <button class="button">Start game</button>
+        </div>
+        <audio class="audio"></audio>
+        <audio class="audioEffect"></audio>
       </div>
-      </div>
-    </section>
+    </div>
   </div>
+  </section>
 </body>
 </html>

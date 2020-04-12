@@ -1,0 +1,14 @@
+.header{
+  height: 9.5em;
+  padding-top: 2em;
+}
+
+.header__wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 0 auto;
+  width: 1020px;
+  padding: 0 40px;
+}
