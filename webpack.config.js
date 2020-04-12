@@ -110,7 +110,6 @@ const config = {
                 progressive: true,
                 quality: 75
               },
-              // optipng.enabled: false will disable optipng
               optipng: {
                 enabled: false,
               },
@@ -122,7 +121,6 @@ const config = {
                 interlaced: false,
                 optimizationLevel: 1
               },
-              // the webp option will enable WEBP
               webp: {
                 quality: 75
               }
