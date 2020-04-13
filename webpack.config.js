@@ -45,7 +45,6 @@ const config = {
       },
       {
         test: /\.js$/,
-        // use: ['babel-loader'/* , 'eslint-loader' */],
         exclude: [
           /node_modules/
         ],
@@ -59,7 +58,6 @@ const config = {
       {
         test: /\.css$/,
         use: [
-          // 'style-loader',
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
@@ -75,7 +73,6 @@ const config = {
       {
         test: /\.scss$/,
         use: [
-          // 'style-loader',
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
@@ -99,7 +96,7 @@ const config = {
           {
             loader: 'file-loader',
             options: {
-              outputPath: 'img',
+              outputPath: 'src/img',
               name: '[name].[ext]'
             }},
           {
@@ -150,7 +147,7 @@ const config = {
     }),
     new CopyWebpackPlugin([
       // {from: './src/static', to: './'},
-      // {from: './src/img', to: './img/'},
+      {from: './src/img', to: './src/img/'},
     ]),
   ],
 
