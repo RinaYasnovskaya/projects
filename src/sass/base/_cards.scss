@@ -1,7 +1,19 @@
+.cards-list__wrapper{
+  max-width: 1440px;
+  margin: 0 auto;
+}
+@media (min-width:768px) and (max-width: 1349px) {
+  .cards-list__wrapper{
+    max-width: 1020px;
+  }
+}
 .cards__wrapper{
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 0 40px;
 }
 .card-wrap {
   text-align: center;
@@ -20,6 +32,7 @@
   margin-bottom: 3em;
   text-align: center;
   display: flex;
+  background-color: $color-body;
     img{
       width: 300px;
     }
@@ -42,7 +55,7 @@
   width: 100%;
   position: absolute;
   bottom: 0;
-  background:rgba(200,38,29,.7);
+  background: $color-train;
   padding: 50px;
   z-index: -2;
 }
@@ -52,6 +65,7 @@
   top: 50%;
   left: 50%;
   margin: -70px 0 0 -71px;
+  border: 3px solid $color-avatar-border;
   border-radius: 100%;
   box-shadow: 15px 12px 0 12px hsla(0,0%,100%,.3), 0 0 50px 50px hsla(0,0%,101%,.25);
   background-size: cover;
@@ -74,7 +88,6 @@
   text-align: center;
   width: 100%;
   pointer-events: none;
-  background: #fff;
 }
 .rotate{
   position: absolute;

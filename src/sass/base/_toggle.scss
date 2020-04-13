@@ -3,6 +3,8 @@ span.switcher {
   width: 150px;
   height: 40px;
   border-radius: 15px;
+  box-shadow: 0 0 7px rgba(0,0,0,.6);
+  
   input {
      -webkit-appearance: none;
      position: relative;
@@ -11,14 +13,17 @@ span.switcher {
      border-radius: 15px;
      font-size: 1.8em;
      font-weight: bold;
-     background-color: $color-switch-train;
+     cursor: pointer;
+     background-color: $color-train;
      outline:none;
+     border: 5px solid transparent;
+     box-shadow: inset 0 0 5px rgba(0,0,0,.3);
      &:before, &:after {
         z-index: 2;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        color: $color-switch-play;
+        color: $color-play;
      }
      &:before {
         content: 'PLAY';
@@ -35,21 +40,23 @@ span.switcher {
      top: 10px;
      bottom: 10px;
      border-radius: 15px;
+     border: 5px solid transparent;
+     box-shadow: inset 0 0 5px rgba(0,0,0,.3);
   }
   &.switcher {
      overflow: hidden;
      input {
         transition: background-color 0s .5s;
         &:before {
-           color: $color-switch-play;
+           color: $color-play;
         }
         &:after {
-           color: $color-switch-train;
+           color: $color-train;
         }
         &:checked {
-           background-color: $color-switch-train;
+           background-color: $color-train;
            &+label {
-              background: $color-switch-train;
+              background: $color-train;
               animation: turn-on .5s ease-out;
               @keyframes turn-on {
                  0% {
@@ -62,9 +69,9 @@ span.switcher {
            }
         }
         &:not(:checked) {
-           background: $color-switch-play;
+           background: $color-play;
            &+label {
-              background: $color-switch-play;
+              background: $color-play;
               animation: turn-off .5s ease-out;
               @keyframes turn-off {
                  0% {

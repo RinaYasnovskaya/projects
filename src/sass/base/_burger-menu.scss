@@ -20,8 +20,8 @@
   position: absolute;
   width: 3.5em;
   height: 5px;
-  background-color: $color-burger-span;
   transition-duration: .25s;
+  background-color: $color-burger-span;
 }
 .burger__button > span::before{
   content: '';
@@ -41,7 +41,7 @@
   height: 100%;
   padding: 80px;
   list-style: none;
-  background-color: $color-burger-menu;
+  background-color: $color-train;
   box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
   transition-duration: .25s;
   z-index: 2;
@@ -57,11 +57,12 @@
   transition-duration: .25s;
 }
 .menu__item:hover{
-  background-color: #CFD8DC;
+  text-decoration: underline;
 }
 
 .active{
   color: $color-burger-active;
+  text-decoration: underline;
 }
 
 #burger__toggle:checked ~ .burger__button > span {
