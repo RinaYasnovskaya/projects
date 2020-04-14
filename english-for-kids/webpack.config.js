@@ -11,17 +11,16 @@ const isProd = ENV === 'prod';
 function setDevTool() {
   if (isDev) {
     return 'cheap-module-eval-source-map';
-  } else {
-    return 'none';
   }
+  return 'none';
 }
 
 function setDMode() {
   if (isProd) {
     return 'production';
-  } else {
-    return 'development';
   }
+  return 'development';
+  
 }
 
 const config = {
