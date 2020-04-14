@@ -25,7 +25,7 @@ function setDMode() {
 
 const config = {
   target: "web",
-  entry: ['./src/index.js', './src/sass/style.scss'],
+  entry: ['././src/index.js', '././src/sass/style.scss'],
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'script.js'
@@ -65,7 +65,7 @@ const config = {
             }
           }, {
             loader: 'postcss-loader',
-            options: { sourceMap: true, config: { path: './postcss.config.js' } }
+            options: { sourceMap: true, config: { path: '././postcss.config.js' } }
           }
         ]
       },
@@ -80,7 +80,7 @@ const config = {
             }
           }, {
             loader: 'postcss-loader',
-            options: { sourceMap: true, config: { path: './postcss.config.js' } }
+            options: { sourceMap: true, config: { path: '././postcss.config.js' } }
           }, {
             loader: 'sass-loader',
             options: {
@@ -95,7 +95,7 @@ const config = {
           {
             loader: 'file-loader',
             options: {
-              outputPath: 'src/img',
+              outputPath: './src/img',
               name: '[name].[ext]'
             }},
           {
@@ -138,15 +138,15 @@ const config = {
 
   plugins: [
     new HtmlWebPackPlugin({
-      template: './src/index.html',
+      template: '././src/index.html',
       // filename: './index.html'
     }),
     new MiniCssExtractPlugin({
-      filename: './src/sass/style.css',
+      filename: '././src/sass/style.css',
     }),
     new CopyWebpackPlugin([
       // {from: './src/static', to: './'},
-      {from: './src/img', to: './src/img/'},
+      {from: '././src/img', to: '././src/img/'},
     ]),
   ],
 

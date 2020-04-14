@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RinaYasnovskaya/english-for-kids.git"
+    "url": "git+https://github.com/rinayasnovskaya-RS2020Q1.git"
   },
   "keywords": [
     "html",
@@ -20,9 +20,9 @@
   "author": "RinaYasnovskaya <rina.yasnovskaya@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/RinaYasnovskaya/english-for-kids/issues"
+    "url": "https://github.com/rinayasnovskaya-RS2020Q1/issues"
   },
-  "homepage": "https://github.com/RinaYasnovskaya/english-for-kids#readme",
+  "homepage": "https://github.com/rinayasnovskaya-RS2020Q1#readme",
   "devDependencies": {
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",

@@ -10,10 +10,9 @@ const items = {
   states: {
     checkBurger: true,
     namePage: 'main',
+    checkToggle: true,
   },
 }
-
-
 
 // show new page (main or category)
 const newPage = (namePage) => {
@@ -23,11 +22,48 @@ const newPage = (namePage) => {
   } else {
     items.elements.vocabulary.style.display = 'block';
     items.elements.main.style.display = 'none';
-    items.elements.burgerList.forEach((elem) => {
-      elem.classList.remove('active');
-      if (namePage === elem.name) {
-        elem.classList.add('active');
-      }
+  }
+  items.elements.burgerList.forEach((elem) => {
+    elem.classList.remove('active');
+    if (namePage === elem.name) {
+      elem.classList.add('active');
+    }
+  });
+}
+
+// switch toggle
+document.querySelector('.switcher').addEventListener('click', () => {
+  switchState();
+  if (document.querySelector('#switcher').checked) {
+    document.querySelector('.menu').style.backgroundColor = "#473764";
+    document.querySelectorAll('.info').forEach((elem) => {
+      elem.style.backgroundColor = "#473764";
+    });
+  } else {
+    document.querySelector('.menu').style.backgroundColor = "#E86007";
+    document.querySelectorAll('.info').forEach((elem) => {
+      elem.style.backgroundColor = "#E86007";
+    });
+  }
+});
+
+// switch state imgs
+const switchState = () => {
+  if (document.querySelector('#switcher').checked) {
+    document.querySelectorAll('.rotate, .card-name').forEach((elem) => {
+      elem.classList.add('hidden');
+    });
+    document.querySelector('.button-start').classList.remove('hidden');
+    document.querySelectorAll('.front').forEach((elem) => {
+      elem.style.backgroundSize = 'cover';
+    });
+  } else {
+    document.querySelectorAll('.rotate, .card-name').forEach((elem) => {
+      elem.classList.remove('hidden');
+    });
+    document.querySelector('.button-start').classList.add('hidden');
+    document.querySelectorAll('.front').forEach((elem) => {
+      elem.style.backgroundSize = 'contain';
     });
   }
 }
