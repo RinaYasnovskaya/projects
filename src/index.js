@@ -1,26 +1,75 @@
-import { cards } from './js/cards'
+// import { cards } from './js/cards'
 
 const items = {
   elements: {
     burgerList: [],
+    main: null,
+    vocabulary: null, 
+    mainCategoryList: [],
   },
-  properties: {
+  states: {
     checkBurger: true,
+    namePage: 'main',
   },
+}
+
+
+
+// show new page (main or category)
+const newPage = (namePage) => {
+  if (namePage === 'main') {
+    items.elements.vocabulary.style.display = 'none';
+    items.elements.main.style.display = 'block';
+  } else {
+    items.elements.vocabulary.style.display = 'block';
+    items.elements.main.style.display = 'none';
+    items.elements.burgerList.forEach((elem) => {
+      elem.classList.remove('active');
+      if (namePage === elem.name) {
+        elem.classList.add('active');
+      }
+    });
+  }
+}
+
+// Burger-menu 
+document.querySelector('.burger__button').addEventListener('click', () => {
+  document.querySelector('#burger__toggle').checked = items.states.checkBurger;
+  items.states.checkBurger = !items.states.checkBurger;
+});
+
+// Burger links
+document.querySelector('.menu').addEventListener('click', (event) => {
+  
+  items.elements.burgerList.forEach((elem) => {
+    if (elem.name === event.target.name) {
+      document.querySelector('#burger__toggle').checked = items.states.checkBurger;
+    }
+  });
+  items.states.namePage = event.target.name;
+  newPage(items.states.namePage);
+});
+
+// menu links
+const menuLinks = () => {
+  items.elements.main.addEventListener('click', (event) => {
+    items.states.namePage = event.target.name;
+    newPage(items.states.namePage);
+  });
 }
 
 const init = () => {
   items.elements.burgerList = document.querySelectorAll('.menu__item');
+  items.elements.main = document.getElementById('main');
+  items.elements.vocabulary = document.getElementById('vocabulary');
+  items.elements.mainCategoryList = document.getElementsByClassName('list');
+
+  newPage(items.states.namePage);
+  menuLinks();
 }
-// Burger-menu 
-document.querySelector('.burger__button').addEventListener('click', () => {
-  document.querySelector('#burger__toggle').checked = items.checkBurger;
-  items.checkBurger = !items.checkBurger;
-});
-
-
 
 
 window.onload = () => {
   init();
+  
 }

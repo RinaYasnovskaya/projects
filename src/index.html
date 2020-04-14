@@ -15,15 +15,15 @@
               <span></span>
             </label>
             <ul class="menu">
-              <li><a id="main" class="menu__item active" href="#">Main Page</a></li>
-              <li><a id="actionA" class="menu__item" href="#">Action (Set A)</a></li>
-              <li><a id="actionB" class="menu__item" href="#">Action (Set B)</a></li>
-              <li><a id="actionC" class="menu__item" href="#">Action (Set C)</a></li>
-              <li><a id="adj" class="menu__item" href="#">Adjective</a></li>
-              <li><a id="animalA" class="menu__item" href="#">Animal (Set A)</a></li>
-              <li><a id="animalB" class="menu__item" href="#">Animal (Set B)</a></li>
-              <li><a id="clothes" class="menu__item" href="#">Clothes</a></li>
-              <li><a id="emotion" class="menu__item" href="#">Emotion</a></li>
+              <li><a name="main" class="menu__item active" href="#">Main Page</a></li>
+              <li><a name="actionA" class="menu__item" href="#">Action (Set A)</a></li>
+              <li><a name="actionB" class="menu__item" href="#">Action (Set B)</a></li>
+              <li><a name="actionC" class="menu__item" href="#">Action (Set C)</a></li>
+              <li><a name="adj" class="menu__item" href="#">Adjective</a></li>
+              <li><a name="animalA" class="menu__item" href="#">Animal (Set A)</a></li>
+              <li><a name="animalB" class="menu__item" href="#">Animal (Set B)</a></li>
+              <li><a name="clothes" class="menu__item" href="#">Clothes</a></li>
+              <li><a name="emotion" class="menu__item" href="#">Emotion</a></li>
             </ul>
           </div>
         </nav>
@@ -35,61 +35,61 @@
   </header>
   <section class="cards-list" >
     <div class="cards-list__wrapper">
-      <div class="cards-category"  >
+      <div class="cards-category" id="main">
         <div class="cards__wrapper">
-          <div class="card-container" >
+          <div class="card-container list" >
             <div id="avatar" style="background-image: url('../src/img/dance.jpg');"></div>
-            <a class="card-main" href="" >  Action (set A) </a>
+            <a class="card-main" href="#" name="actionA">  Action (set A) </a>
             <div class="info"></div>
           </div>
-          <div class="card-container" >
+          <div class="card-container list" >
             <div id="avatar" style="background-image: url(../src/img/open.jpg);"> </div>
-            <a class="card-main" href="" > Action (set B) </a>
+            <a class="card-main" href="#" name="actionB"> Action (set B) </a>
             <div class="info"></div>
           </div>
-          <div class="card-container" >
+          <div class="card-container list" >
             <div id="avatar" style="background-image: url(../src/img/argue.jpg);"> </div>
-            <a class="card-main" href=""> Action (set C) </a>
+            <a class="card-main" href="#" name="actionC"> Action (set C) </a>
             <div class="info"></div>
           </div>
-          <div class="card-container" >
+          <div class="card-container list" >
             <div id="avatar" style="background-image: url(../src/img/big.jpg);"> </div>
-            <a class="card-main" href=""> Adjective </a>
+            <a class="card-main" href="#" name="adj"> Adjective </a>
             <div class="info"></div>
           </div>
-          <div class="card-container" >
+          <div class="card-container list" >
             <div id="avatar" style="background-image: url(../src/img/cat.jpg);"> </div>
-            <a class="card-main" href=""> Animal (set A) </a>
+            <a class="card-main" href="#" name="animalA"> Animal (set A) </a>
             <div class="info"></div>
           </div>
-          <div class="card-container" >
+          <div class="card-container list" >
             <div id="avatar" style="background-image: url(../src/img/bird.jpg);"> </div>
-            <a class="card-main" href=""> Animal (set B) </a>
+            <a class="card-main" href="#" name="animalB"> Animal (set B) </a>
             <div class="info"></div>
           </div>
-          <div class="card-container" >
+          <div class="card-container list" >
             <div id="avatar" style="background-image: url(../src/img/skirt.jpg);"> </div>
-            <a class="card-main" href=""> Clothes </a>
+            <a class="card-main" href="#" name="clothes"> Clothes </a>
             <div class="info"></div>
           </div>
-          <div class="card-container" >
+          <div class="card-container list" >
             <div id="avatar" style="background-image: url(../src/img/sad.jpg);"> </div>
-            <a class="card-main" href=""> Emotion </a>
+            <a class="card-main" href="#" name="emotion"> Emotion </a>
             <div class="info"></div>
           </div>
         </div>
       </div>
-      <div class="cards-vocabulary" style="display: none;">
+      <div class="cards-vocabulary" id="vocabulary">
         <div class="cards__wrapper">
           <div class="card-wrap">
-            <div class="card-container container">
+            <div class="card-container">
               <div class="front" style="background-image: url(./src/img/cry.jpg)">
-                <span class="card-name hidden">cry</span>
+                <span class="card-name ">cry</span>
                 </div>
               <div class="back" style="background-image: url(../src/img/cry.jpg)">
-                <span class="card-name hidden">плакать</span>
+                <span class="card-name ">плакать</span>
                 </div>
-                <div class="rotate hidden">
+                <div class="rotate ">
                   <img src="../src/img/rotate.svg" alt="rotate">
                 </div>
               </div>
@@ -97,88 +97,102 @@
           <div class="card-wrap">
             <div class="card-container">
               <div class="front" style="background-image: url(../src/img/dance.jpg);">
-                <div class="card-name hidden">dance</div>
+                <div class="card-name ">dance</div>
               </div>
               <div class="back" style="background-image: url(../src/img/dance.jpg);">
-                <div class="card-name hidden">танцевать</div>
+                <div class="card-name ">танцевать</div>
               </div>
-              <div class="rotate hidden"></div>
+              <div class="rotate ">
+                <img src="../src/img/rotate.svg" alt="rotate">
+              </div>
             </div>
           </div>
           <div class="card-wrap">
             <div class="card-container">
               <div class="front" style="background-image: url(../src/img/dive.jpg);">
-                <div class="card-name hidden">dive</div>
+                <div class="card-name ">dive</div>
               </div>
               <div class="back" style="background-image: url(../src/img/dive.jpg); ">
-                <div class="card-name hidden">нырять</div>
+                <div class="card-name ">нырять</div>
               </div>
-              <div class="rotate hidden"></div>
+              <div class="rotate ">
+                <img src="../src/img/rotate.svg" alt="rotate">
+              </div>
             </div>
           </div>
           <div class="card-wrap">
             <div class="card-container">
               <div class="front" style="background-image: url(../src/img/draw.jpg);">
-                <div class="card-name hidden">draw</div>
+                <div class="card-name ">draw</div>
               </div>
               <div class="back" style="background-image:url(../src/img/draw.jpg); ">
-                <div class="card-name hidden">рисовать</div>
+                <div class="card-name ">рисовать</div>
               </div>
-              <div class="rotate hidden"></div>
+              <div class="rotate ">
+                <img src="../src/img/rotate.svg" alt="rotate">
+              </div>
             </div>
           </div>
           <div class="card-wrap">
             <div class="card-container">
               <div class="front" style="background-image: url(../src/img/fish.jpg);">
-                <div class="card-name hidden">fish</div>
+                <div class="card-name ">fish</div>
               </div>
               <div class="back" style="background-image: url(../src/img/fish.jpg);">
-                <div class="card-name hidden">ловить рыбу</div>
+                <div class="card-name ">ловить рыбу</div>
               </div>
-              <div class="rotate hidden"></div>
+              <div class="rotate ">
+                <img src="../src/img/rotate.svg" alt="rotate">
+              </div>
             </div>
           </div>
           <div class="card-wrap">
             <div class="card-container">
               <div class="front" style="background-image: url(../src/img/fly.jpg);">
-                <div class="card-name hidden">fly</div>
+                <div class="card-name ">fly</div>
               </div>
               <div class="back" style="background-image: url(../src/img/fly.jpg);">
-                <div class="card-name hidden">летать</div>
+                <div class="card-name ">летать</div>
               </div>
-              <div class="rotate hidden"></div>
+              <div class="rotate ">
+                <img src="../src/img/rotate.svg" alt="rotate">
+              </div>
             </div>
           </div>
           <div class="card-wrap">
             <div class="card-container">
               <div class="front" style="background-image: url(../src/img/hug.jpg);">
-                <div class="card-name hidden">hug</div>
+                <div class="card-name ">hug</div>
               </div>
               <div class="back" style="background-image: url(../src/img/hug.jpg);">
-                <div class="card-name hidden">обнимать</div>
+                <div class="card-name">обнимать</div>
               </div>
-              <div class="rotate hidden"></div>
+              <div class="rotate">
+                <img src="../src/img/rotate.svg" alt="rotate">
+              </div>
             </div>
           </div>
           <div class="card-wrap">
             <div class="card-container">
               <div class="front" style="background-image:url(../src/img/jump.jpg); ">
-                <div class="card-name hidden">jump</div>
+                <div class="card-name">jump</div>
               </div>
               <div class="back" style="background-image: url(../src/img/jump.jpg);">
-                <div class="card-name hidden">прыгать</div>
+                <div class="card-name">прыгать</div>
               </div>
-              <div class="rotate hidden"></div>
+              <div class="rotate">
+                <img src="../src/img/rotate.svg" alt="rotate">
+              </div>
             </div>
           </div>
           
           <audio class="audio"></audio>
           <audio class="audioEffect"></audio>
         </div>
-        <div class="button-start">
+        <div class="button-start" style="display: none">
           <button class="button">Start game</button>
         </div>
-        </div>
+      </div>
     </div>
     </div>
   </section>
