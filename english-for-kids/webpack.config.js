@@ -3,6 +3,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const load = require('audio-loader');
 
 const ENV = process.env.npm_lifecycle_event;
 const isDev = ENV === 'dev';
@@ -25,7 +26,7 @@ function setDMode() {
 
 const config = {
   target: "web",
-  entry: ['././src/index.js', '././src/sass/style.scss'],
+  entry: ['./src/index.js', './src/sass/style.scss'],
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'script.js'
@@ -65,7 +66,7 @@ const config = {
             }
           }, {
             loader: 'postcss-loader',
-            options: { sourceMap: true, config: { path: '././postcss.config.js' } }
+            options: { sourceMap: true, config: { path: './postcss.config.js' } }
           }
         ]
       },
@@ -80,7 +81,7 @@ const config = {
             }
           }, {
             loader: 'postcss-loader',
-            options: { sourceMap: true, config: { path: '././postcss.config.js' } }
+            options: { sourceMap: true, config: { path: './postcss.config.js' } }
           }, {
             loader: 'sass-loader',
             options: {
@@ -132,21 +133,30 @@ const config = {
             outputPath: 'fonts'
           }
         }]
+      },
+      {
+        test: /\.(ogg|mp3|wav|mpe?g)$/i,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            outputPath: './src/audio',
+            name: '[name].[ext]'
+          }
+        }]
       }
     ]
   },
 
   plugins: [
     new HtmlWebPackPlugin({
-      template: '././src/index.html',
-      // filename: './index.html'
+      template: './src/index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: '././src/sass/style.css',
+      filename: './src/sass/style.css',
     }),
     new CopyWebpackPlugin([
-      // {from: './src/static', to: './'},
-      {from: '././src/img', to: '././src/img/'},
+      {from: './src/img', to: './src/img/'},
+      {from: './src/audio', to: './audio/'},
     ]),
   ],
 

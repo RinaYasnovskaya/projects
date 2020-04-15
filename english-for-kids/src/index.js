@@ -1,4 +1,5 @@
-// import { cards } from './js/cards'
+import { cards } from './js/cards';
+import { Card } from './js/Card';
 
 const items = {
   elements: {
@@ -29,21 +30,16 @@ const newPage = (namePage) => {
       elem.classList.add('active');
     }
   });
+  if (items.states.namePage !== 'main') {
+    generateCards(cards).forEach((elem) => [
+      document.getElementById('innerVocabulary').append(elem.generateCard())
+    ]);
+    flipImg();
+    soundOn();
+  }
 }
 
-// flip img
-document.querySelectorAll('.card-container').forEach(elem => {
-  elem.addEventListener('click', (event) => {
-    if (event.target.alt === 'rotate') {
-      elem.classList.add('transform');
-    }
-  });
-  elem.addEventListener('mouseleave', () => {
-    elem.classList.remove('transform');
-  });
-});
-
-// switch toggle
+// change style for all when we switch toggle 
 document.querySelector('.switcher').addEventListener('click', () => {
   switchState();
   if (document.querySelector('#switcher').checked) {
@@ -59,7 +55,21 @@ document.querySelector('.switcher').addEventListener('click', () => {
   }
 });
 
-// switch state imgs
+// flip img
+const flipImg = () => {
+  document.querySelectorAll('.card-container').forEach(elem => {
+    elem.addEventListener('click', (event) => {
+      if (event.target.alt === 'rotate') {
+        elem.classList.add('transform');
+      }
+    });
+    elem.addEventListener('mouseleave', () => {
+      elem.classList.remove('transform');
+    });
+  });  
+}
+
+// switch state imgs play\train
 const switchState = () => {
   if (document.querySelector('#switcher').checked) {
     document.querySelectorAll('.rotate, .card-name').forEach((elem) => {
@@ -80,15 +90,14 @@ const switchState = () => {
   }
 }
 
-// Burger-menu 
+// change state when we click on burger span
 document.querySelector('.burger__button').addEventListener('click', () => {
   document.querySelector('#burger__toggle').checked = items.states.checkBurger;
   items.states.checkBurger = !items.states.checkBurger;
 });
 
-// Burger links
+// create new page when we click on burger links
 document.querySelector('.menu').addEventListener('click', (event) => {
-  
   items.elements.burgerList.forEach((elem) => {
     if (elem.name === event.target.name) {
       document.querySelector('#burger__toggle').checked = items.states.checkBurger;
@@ -98,7 +107,7 @@ document.querySelector('.menu').addEventListener('click', (event) => {
   newPage(items.states.namePage);
 });
 
-// menu links
+// create new page when we click on main page links
 const menuLinks = () => {
   items.elements.main.addEventListener('click', (event) => {
     items.states.namePage = event.target.name;
@@ -106,6 +115,45 @@ const menuLinks = () => {
   });
 }
 
+const generateCards = (cards) => {
+  let wrapper = getWrapper();
+  let allCards = [];
+  cards.forEach((item) => {
+    if (cards.indexOf(item) === +items.states.namePage) {
+      item.forEach((elem) => {
+        allCards.push(new Card(elem));
+      });
+    }
+  });
+  return allCards;
+}
+
+// clear wrapper every time
+const getWrapper = () => {
+  const vocabularyWrapper = document.querySelector('#innerVocabulary');
+  vocabularyWrapper.innerHTML = '';
+  return vocabularyWrapper;
+}
+
+const soundOn = () => {
+  document.querySelectorAll('.front').forEach((elem) => {
+    elem.addEventListener('click', (event) => {
+      console.log(event.target);
+      createSound();
+    });
+  });
+}
+
+const createSound = () => {
+  // let audio = new Audio(); 
+	// audio.src = './src/audio/angry.mp3'; 
+  
+  
+  const audioSrc = event.target.closest(`.card-container`).dataset.audio;
+  const audio = new Audio(audioSrc);
+  audio.autoplay = true; 
+}
+ 
 const init = () => {
   items.elements.burgerList = document.querySelectorAll('.menu__item');
   items.elements.main = document.getElementById('main');
@@ -116,8 +164,6 @@ const init = () => {
   menuLinks();
 }
 
-
 window.onload = () => {
   init();
-  
 }

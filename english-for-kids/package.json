@@ -53,6 +53,7 @@
     "webpack-dev-server": "^3.8.2"
   },
   "dependencies": {
+    "audio-loader": "^1.0.3",
     "core-js": "^3.4.7",
     "regenerator-runtime": "^0.13.3"
   }
