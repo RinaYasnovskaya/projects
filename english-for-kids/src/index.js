@@ -138,19 +138,17 @@ const getWrapper = () => {
 const soundOn = () => {
   document.querySelectorAll('.front').forEach((elem) => {
     elem.addEventListener('click', (event) => {
-      console.log(event.target);
-      createSound();
+      if (!document.querySelector('#switcher').checked) {
+        createSound();
+      }
     });
   });
 }
 
 const createSound = () => {
-  // let audio = new Audio(); 
-	// audio.src = './src/audio/angry.mp3'; 
-  
-  
   const audioSrc = event.target.closest(`.card-container`).dataset.audio;
   const audio = new Audio(audioSrc);
+  console.log(audioSrc);
   audio.autoplay = true; 
 }
  

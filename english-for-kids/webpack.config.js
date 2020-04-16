@@ -140,7 +140,7 @@ const config = {
           loader: 'file-loader',
           options: {
             outputPath: './src/audio',
-            name: '[name].[ext]'
+            name: '[name].[ext]',
           }
         }]
       }
@@ -156,7 +156,7 @@ const config = {
     }),
     new CopyWebpackPlugin([
       {from: './src/img', to: './src/img/'},
-      {from: './src/audio', to: './audio/'},
+      {from: './src/audio', to: './src/audio/'},
     ]),
   ],
 
