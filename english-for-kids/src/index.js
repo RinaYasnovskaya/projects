@@ -151,6 +151,12 @@ const createSound = (audioSrc) => {
   audio.autoplay = true; 
 }
 
+// play game
+document.querySelector('.button').addEventListener('click', () => {
+  getWrapper('.button');
+  document.querySelector('.button').innerHTML = '<img src="./src/img/rotate.svg">';
+  document.querySelector('.button').classList.add('button-repeat');
+});
 
 const init = () => {
   items.elements.burgerList = document.querySelectorAll('.menu__item');
