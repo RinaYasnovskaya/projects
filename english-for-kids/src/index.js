@@ -101,10 +101,10 @@ document.querySelector('.menu').addEventListener('click', (event) => {
   items.elements.burgerList.forEach((elem) => {
     if (elem.name === event.target.name) {
       document.querySelector('#burger__toggle').checked = items.states.checkBurger;
+      items.states.namePage = event.target.name
+      newPage(items.states.namePage);
     }
   });
-  items.states.namePage = event.target.name;
-  newPage(items.states.namePage);
 });
 
 // create new page when we click on main page links
