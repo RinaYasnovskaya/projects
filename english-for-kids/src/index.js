@@ -148,7 +148,6 @@ const soundOn = () => {
 const createSound = () => {
   const audioSrc = event.target.closest(`.card-container`).dataset.audio;
   const audio = new Audio(audioSrc);
-  console.log(audioSrc);
   audio.autoplay = true; 
 }
  
