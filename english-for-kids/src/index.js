@@ -116,7 +116,7 @@ const menuLinks = () => {
 }
 
 const generateCards = (cards) => {
-  let wrapper = getWrapper();
+  let wrapper = getWrapper('#innerVocabulary');
   let allCards = [];
   cards.forEach((item) => {
     if (cards.indexOf(item) === +items.states.namePage) {
@@ -129,28 +129,29 @@ const generateCards = (cards) => {
 }
 
 // clear wrapper every time
-const getWrapper = () => {
-  const vocabularyWrapper = document.querySelector('#innerVocabulary');
-  vocabularyWrapper.innerHTML = '';
-  return vocabularyWrapper;
+const getWrapper = (nameWrap) => {
+  const editWrap = document.querySelector(`${nameWrap}`);
+  editWrap.innerHTML = '';
+  return editWrap;
 }
 
 const soundOn = () => {
   document.querySelectorAll('.front').forEach((elem) => {
     elem.addEventListener('click', (event) => {
       if (!document.querySelector('#switcher').checked) {
-        createSound();
+        createSound(event.target.closest(`.card-container`).dataset.audio);
       }
     });
   });
 }
 
-const createSound = () => {
-  const audioSrc = event.target.closest(`.card-container`).dataset.audio;
+const createSound = (audioSrc) => {
+  // const audioSrc = event.target.closest(`.card-container`).dataset.audio;
   const audio = new Audio(audioSrc);
   audio.autoplay = true; 
 }
- 
+
+
 const init = () => {
   items.elements.burgerList = document.querySelectorAll('.menu__item');
   items.elements.main = document.getElementById('main');
