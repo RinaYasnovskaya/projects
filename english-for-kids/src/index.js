@@ -77,7 +77,7 @@ const switchState = () => {
     });
     document.querySelector('.button-start').classList.remove('hidden');
     document.querySelectorAll('.front').forEach((elem) => {
-      elem.style.backgroundSize = 'cover';
+      elem.classList.add('cover');
     });
   } else {
     document.querySelectorAll('.rotate, .card-name').forEach((elem) => {
@@ -85,16 +85,22 @@ const switchState = () => {
     });
     document.querySelector('.button-start').classList.add('hidden');
     document.querySelectorAll('.front').forEach((elem) => {
-      elem.style.backgroundSize = 'contain';
+      elem.classList.remove('cover');
     });
   }
 }
 
 // change state when we click on burger span
-document.querySelector('.burger__button').addEventListener('click', () => {
-  document.querySelector('#burger__toggle').checked = items.states.checkBurger;
-  items.states.checkBurger = !items.states.checkBurger;
-});
+document.addEventListener('click',  () => {
+  if (document.querySelector('#burger__toggle').checked) {
+    document.querySelector('#burger__toggle').checked = !items.states.checkBurger;
+    items.states.checkBurger = !items.states.checkBurger;
+  }
+  document.querySelector('.burger__button').addEventListener('click', () => {
+    document.querySelector('#burger__toggle').checked = items.states.checkBurger;
+    items.states.checkBurger = !items.states.checkBurger;
+  });
+})
 
 // create new page when we click on burger links
 document.querySelector('.menu').addEventListener('click', (event) => {
@@ -110,8 +116,10 @@ document.querySelector('.menu').addEventListener('click', (event) => {
 // create new page when we click on main page links
 const menuLinks = () => {
   items.elements.main.addEventListener('click', (event) => {
-    items.states.namePage = event.target.name;
-    newPage(items.states.namePage);
+    if (event.target.name) {
+      items.states.namePage = event.target.name;
+      newPage(items.states.namePage);
+    }
   });
 }
 
@@ -150,13 +158,6 @@ const createSound = (audioSrc) => {
   const audio = new Audio(audioSrc);
   audio.autoplay = true; 
 }
-
-// play game
-document.querySelector('.button').addEventListener('click', () => {
-  getWrapper('.button');
-  document.querySelector('.button').innerHTML = '<img src="./src/img/rotate.svg">';
-  document.querySelector('.button').classList.add('button-repeat');
-});
 
 const init = () => {
   items.elements.burgerList = document.querySelectorAll('.menu__item');

@@ -5,6 +5,9 @@
 }
 #burger__toggle{
   opacity: 0;
+  width: 35px;
+  height: 35px;
+  z-index: 5;
 }
 .burger__button{
   display: flex; 
@@ -13,6 +16,7 @@
   width: 35px;
   cursor: pointer;
   z-index: 3;
+  margin: -20px 0px;
 }
 .burger__button > span,
 .burger__button > span::before,
