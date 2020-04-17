@@ -14,43 +14,21 @@ const items = {
     checkToggle: true,
   },
 }
-
-// show new page (main or category)
-const newPage = (namePage) => {
-  if (namePage === 'main') {
-    items.elements.vocabulary.style.display = 'none';
-    items.elements.main.style.display = 'block';
-  } else {
-    items.elements.vocabulary.style.display = 'block';
-    items.elements.main.style.display = 'none';
-  }
-  items.elements.burgerList.forEach((elem) => {
-    elem.classList.remove('active');
-    if (namePage === elem.name) {
-      elem.classList.add('active');
-    }
-  });
-  if (items.states.namePage !== 'main') {
-    generateCards(cards).forEach((elem) => [
-      document.getElementById('innerVocabulary').append(elem.generateCard())
-    ]);
-    flipImg();
-    soundOn();
-  }
-}
+const colorTrain = '#473764';
+const colorPlay = '#E86007';
 
 // change style for all when we switch toggle 
 document.querySelector('.switcher').addEventListener('click', () => {
   switchState();
   if (document.querySelector('#switcher').checked) {
-    document.querySelector('.menu').style.backgroundColor = "#473764";
+    document.querySelector('.menu').style.backgroundColor = `${colorTrain}`;
     document.querySelectorAll('.info').forEach((elem) => {
-      elem.style.backgroundColor = "#473764";
+      elem.style.backgroundColor = `${colorTrain}`;
     });
   } else {
-    document.querySelector('.menu').style.backgroundColor = "#E86007";
+    document.querySelector('.menu').style.backgroundColor = `${colorPlay}`;
     document.querySelectorAll('.info').forEach((elem) => {
-      elem.style.backgroundColor = "#E86007";
+      elem.style.backgroundColor = `${colorPlay}`;
     });
   }
 });
@@ -123,6 +101,31 @@ const menuLinks = () => {
   });
 }
 
+const newPage = (namePage) => {
+  if (namePage === 'main') {
+    items.elements.vocabulary.style.display = 'none';
+    items.elements.main.style.display = 'block';
+  } else {
+    items.elements.vocabulary.style.display = 'block';
+    items.elements.main.style.display = 'none';
+  }
+  items.elements.burgerList.forEach((elem) => {
+    elem.classList.remove('active');
+    if (namePage === elem.name) {
+      elem.classList.add('active');
+    }
+  });
+  if (items.states.namePage !== 'main') {
+    generateCards(cards).forEach((elem) => [
+      document.getElementById('innerVocabulary').append(elem.generateCard())
+    ]);
+    flipImg();
+    switchState();
+    soundOn();
+    playGame();
+  }
+}
+
 const generateCards = (cards) => {
   let wrapper = getWrapper('#innerVocabulary');
   let allCards = [];
@@ -154,9 +157,62 @@ const soundOn = () => {
 }
 
 const createSound = (audioSrc) => {
-  // const audioSrc = event.target.closest(`.card-container`).dataset.audio;
   const audio = new Audio(audioSrc);
   audio.autoplay = true; 
+}
+
+const playGame = () => {
+  let arrSounds = [];
+
+  document.querySelectorAll('.card-container').forEach((elem) => {
+    if (elem.dataset.audio) {
+      arrSounds.push(elem.dataset.audio);
+    }
+  });
+
+  let shuffleArr = shuffle(arrSounds);
+  let step = 0,
+      count = 0;
+
+    document.querySelector('.button').addEventListener('click', () => {
+      getWrapper('.button');
+      document.querySelector('.button').innerHTML = '<img src="./src/img/rotate.svg">';
+      document.querySelector('.button').classList.add('button-repeat');
+      createSound(shuffleArr[step]);
+    });
+    
+    document.querySelectorAll('.card-container').forEach((elem) => {
+      elem.addEventListener('click', () => {
+        if(shuffleArr[step] === elem.dataset.audio) {
+          elem.classList.add('inactive');
+          step++;
+          createSound('./src/audio/correct.mp3');
+          createStar('star-win');
+          
+          setTimeout(() => {createSound(shuffleArr[step]);}, 1000);
+        } else {
+          if (!elem.classList.contains('inactive')) {
+            createSound('./src/audio/error.mp3');
+            createStar('star');
+          }
+        }
+      })
+    });
+}
+
+const createStar = (nameStar) => {
+  let star = document.createElement('div');
+  star.classList.add('stars__one');
+  star.innerHTML = `<img src="../src/img/${nameStar}.svg">`;
+  document.querySelector('.stars').append(star);
+}
+
+const shuffle = (arr) => {
+  for (let i = arr.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
 }
 
 const init = () => {

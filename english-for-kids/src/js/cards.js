@@ -215,7 +215,7 @@ export const cards = [
         word: 'dog',
         translation: 'собака',
         image: './src/img/dog.jpg',
-        audioSrc: '.src.audio/dog.mp3'
+        audioSrc: './src/audio/dog.mp3'
       },
       {
         word: 'horse',

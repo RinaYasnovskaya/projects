@@ -23,7 +23,7 @@
 .card-container {
   position: relative;
   transform-style: preserve-3d;
-  transition: .7s linear; 
+  transition: .5s linear; 
   padding-top: 15px;
   border-radius: 33px 33px 0px 0px;
   height: 25em;
@@ -61,6 +61,7 @@
   background: $color-play;
   padding: 50px;
   z-index: -2;
+  transition: .2s;
 }
 #avatar{
   width: 150px;
@@ -93,14 +94,17 @@
   pointer-events: none;
 }
 .rotate{
+  padding: 9px 0px 0px 200px;
   position: absolute;
-	bottom: 5px;
-	right: 20px;
+  bottom: 1px;
+  right: -14px;
   transition: 1s;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   cursor: pointer;
   z-index: 3;
+  width: 100%;
+  height: 50px;
   img{
     width: 35px;
     height: 35px;
@@ -134,7 +138,35 @@
 .cover{
   background-size: cover;
 }
-
 .list {
   margin-bottom: 40px;
+}
+.inactive {
+  opacity: .4;
+}
+.stars{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
+  height: 40px;
+  overflow-x: hidden;
+  line-height: 36px;
+  font-size: 36px;
+  // &__correct{
+  //   background-image: url('../img/star-win.svg');
+  // }
+  // &__error{
+  //   background-image: url('./img/star.svg');
+  // }
+  &__one{
+    img{
+      flex-shrink: 0;
+      width: 40px;
+      min-width: 40px;
+      height: 40px;
+      background-size: 40px 40px;
+    }
+  }
 }
