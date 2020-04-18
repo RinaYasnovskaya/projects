@@ -32,5 +32,8 @@ export const newPage = (namePage) => {
     soundOn();
     countClickTrain();
     changeButtonGame();
+  } else if (items.states.namePage === 'statistic') {
+    getWrapper('#innerVocabulary');
+    // TODO
   }
 };
