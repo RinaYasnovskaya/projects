@@ -58,6 +58,7 @@ const switchState = () => {
     document.querySelectorAll('.front').forEach((elem) => {
       elem.classList.add('cover');
     });
+    playGame(); 
   } else {
     document.querySelectorAll('.rotate, .card-name').forEach((elem) => {
       elem.classList.remove('hidden');
@@ -124,10 +125,8 @@ const newPage = (namePage) => {
     flipImg();
     switchState();
     soundOn();
-    if (document.querySelector('#switcher').checked) {
-      playGame(); 
-    }
     countClickTrain();
+    changeButtonGame();
   }
 }
 
@@ -167,21 +166,18 @@ const createSound = (audioSrc) => {
 
 const changeButtonGame = () => {
   getWrapper('.button');
-  if (items.states.endGame) {
-    document.querySelector('.button').textContent = 'Start Game';
-    document.querySelector('.button').classList.remove('button-repeat');
-    document.querySelector('.button').classList.remove('hidden');
-    items.states.endGame = false;
-  } else {
-    document.querySelector('.button').innerHTML = '<img src="./src/img/repeat.svg">';
-    document.querySelector('.button').classList.add('button-repeat'); 
-  }
+  document.querySelector('.button').textContent = 'Start Game';
+  document.querySelector('.button').classList.remove('button-repeat');
+  document.querySelector('.button').classList.remove('hidden');
+  items.states.endGame = false;
 }
 
 const playGame = () => {
   let arrSounds = [];
-  let words = [];
-
+  let step = 0,
+      countError = 0,
+      countCorrect = 0;
+    
   document.querySelectorAll('.voc-card').forEach((elem) => {
     if (elem.dataset.audio) {
       arrSounds.push(elem.dataset.audio);
@@ -189,23 +185,22 @@ const playGame = () => {
   });
 
   let shuffleArr = shuffle(arrSounds);
-  let step = 0,
-      countError = 0,
-      countCorrect = 0;
 
   document.querySelector('.button').addEventListener('click', () => {
-    changeButtonGame();
+    document.querySelector('.button').innerHTML = '<img src="./src/img/repeat.svg">';
+    document.querySelector('.button').classList.add('button-repeat'); 
     createSound(shuffleArr[step]);    
   });
   document.querySelectorAll('.voc-card').forEach((elem) => {
     elem.addEventListener('click', () => {
       if(shuffleArr[step] === elem.dataset.audio) {
+        countClickPlay(elem.dataset.audio, 'correct');
         elem.classList.add('inactive');
         step++;
         createSound('./src/audio/correct.mp3');
         createStar('star-win');
         setTimeout(() => { createSound(shuffleArr[step]); }, 1000);
-        if (step === shuffleArr.length) {
+        if (step === arrSounds.length) {
           items.states.endGame = true;
           setTimeout(() => { 
             getWrapper('.stars');
@@ -220,7 +215,8 @@ const playGame = () => {
         }
       } else {
         if (!elem.classList.contains('inactive')) {
-          countError += 1;
+          countClickPlay(shuffleArr[step], 'error');
+          countError++;
           createSound('./src/audio/error.mp3');
           createStar('star');
         }
@@ -259,17 +255,26 @@ const shuffle = (arr) => {
 
 const countClickTrain = () => {
   document.querySelectorAll('.voc-card').forEach((item) => {
-    if (!document.querySelector('#switcher').checked) {
-      item.addEventListener('click', () => {
+    item.addEventListener('click', () => {
+      if (!document.querySelector('#switcher').checked) {
         for (let i=0; i<cards.length; i++) {
           if (item.dataset.audio === cards[items.states.namePage][i]['audioSrc']) {
             cards[items.states.namePage][i]['train'] += 1;
             localStorage.setItem('cards', JSON.stringify(cards));
           }
         }
-      })
-    }
+      } 
+    })
   })
+}
+
+const countClickPlay = (src, nameParam) => {
+  for (let i=0; i< cards.length; i++) {
+    if (src === cards[items.states.namePage][i]['audioSrc']) {
+      cards[items.states.namePage][i][`${nameParam}`] += 1;
+      localStorage.setItem('cards', JSON.stringify(cards));
+    }
+  }
 }
 
 const init = () => {
