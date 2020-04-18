@@ -54,7 +54,10 @@ export const cards = [
         word: 'open',
         translation: 'открывать',
         image: './src/img/open.jpg',
-        audioSrc: './src/audio/open.mp3'
+        audioSrc: './src/audio/open.mp3',
+        train: '0',
+        error: '0',
+        correct: '0',
       },
       {
         word: 'play',

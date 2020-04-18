@@ -154,12 +154,6 @@
   overflow-x: hidden;
   line-height: 36px;
   font-size: 36px;
-  // &__correct{
-  //   background-image: url('../img/star-win.svg');
-  // }
-  // &__error{
-  //   background-image: url('./img/star.svg');
-  // }
   &__one{
     img{
       flex-shrink: 0;
@@ -169,4 +163,9 @@
       background-size: 40px 40px;
     }
   }
+}
+.result{
+  font-size: 2.4em;
+  color: blue;
+  text-align: center;
 }

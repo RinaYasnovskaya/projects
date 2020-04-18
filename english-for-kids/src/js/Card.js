@@ -11,7 +11,7 @@ export class Card {
     const oneCard = document.createElement('div');
     oneCard.className = 'card-wrap';
     const innerDiv = document.createElement('div');
-    innerDiv.className = 'card-container';
+    innerDiv.className = 'card-container voc-card';
     innerDiv.setAttribute('data-audio', this.audioSrc);
 
     if (this.image) {
@@ -24,9 +24,6 @@ export class Card {
         template += `<span class="card-name"> ${this.translation}</span>`;
       }
       template += ' </div>';
-      if (this.audioSrc) {
-        template += `<div> <audio class='audio' src="${this.audioSrc}"></audio> </div>`
-      }
     }
     
     const rotate = document.createElement('div');

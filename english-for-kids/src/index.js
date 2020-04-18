@@ -12,6 +12,7 @@ const items = {
     checkBurger: true,
     namePage: 'main',
     checkToggle: true,
+    endGame: false,
   },
 }
 const colorTrain = '#473764';
@@ -116,18 +117,18 @@ const newPage = (namePage) => {
     }
   });
   if (items.states.namePage !== 'main') {
+    getWrapper('#innerVocabulary');
     generateCards(cards).forEach((elem) => [
       document.getElementById('innerVocabulary').append(elem.generateCard())
     ]);
     flipImg();
     switchState();
     soundOn();
-    playGame();
+    playGame(); 
   }
 }
 
 const generateCards = (cards) => {
-  let wrapper = getWrapper('#innerVocabulary');
   let allCards = [];
   cards.forEach((item) => {
     if (cards.indexOf(item) === +items.states.namePage) {
@@ -161,8 +162,22 @@ const createSound = (audioSrc) => {
   audio.autoplay = true; 
 }
 
+const changeButtonGame = () => {
+  getWrapper('.button');
+  if (items.states.endGame) {
+    document.querySelector('.button').textContent = 'Start Game';
+    document.querySelector('.button').classList.remove('button-repeat');
+    document.querySelector('.button').classList.remove('hidden');
+    items.states.endGame = false;
+  } else {
+    document.querySelector('.button').innerHTML = '<img src="./src/img/repeat.svg">';
+    document.querySelector('.button').classList.add('button-repeat'); 
+  }
+}
+
 const playGame = () => {
   let arrSounds = [];
+  let words = [];
 
   document.querySelectorAll('.card-container').forEach((elem) => {
     if (elem.dataset.audio) {
@@ -172,32 +187,43 @@ const playGame = () => {
 
   let shuffleArr = shuffle(arrSounds);
   let step = 0,
-      count = 0;
+      countError = 0,
+      countCorrect = 0;
 
-    document.querySelector('.button').addEventListener('click', () => {
-      getWrapper('.button');
-      document.querySelector('.button').innerHTML = '<img src="./src/img/rotate.svg">';
-      document.querySelector('.button').classList.add('button-repeat');
-      createSound(shuffleArr[step]);
-    });
-    
-    document.querySelectorAll('.card-container').forEach((elem) => {
-      elem.addEventListener('click', () => {
-        if(shuffleArr[step] === elem.dataset.audio) {
-          elem.classList.add('inactive');
-          step++;
-          createSound('./src/audio/correct.mp3');
-          createStar('star-win');
-          
-          setTimeout(() => {createSound(shuffleArr[step]);}, 1000);
-        } else {
-          if (!elem.classList.contains('inactive')) {
-            createSound('./src/audio/error.mp3');
-            createStar('star');
-          }
+  document.querySelector('.button').addEventListener('click', () => {
+    changeButtonGame();
+    createSound(shuffleArr[step]);    
+  });
+  document.querySelectorAll('.voc-card').forEach((elem) => {
+    elem.addEventListener('click', () => {
+      if(shuffleArr[step] === elem.dataset.audio) {
+        elem.classList.add('inactive');
+        step++;
+        createSound('./src/audio/correct.mp3');
+        createStar('star-win');
+        setTimeout(() => { createSound(shuffleArr[step]); }, 1000);
+        if (step === shuffleArr.length) {
+          items.states.endGame = true;
+          setTimeout(() => { 
+            getWrapper('.stars');
+            getWrapper('#innerVocabulary');
+            document.querySelector('.button').classList.add('hidden');
+            if (countError <= 0) {
+              createSmile("success", countError);
+            } else {
+              createSmile("failure", countError);
+            }
+          }, 1000);
         }
-      })
-    });
+      } else {
+        if (!elem.classList.contains('inactive')) {
+          countError += 1;
+          createSound('./src/audio/error.mp3');
+          createStar('star');
+        }
+      }
+    })
+  });
 }
 
 const createStar = (nameStar) => {
@@ -205,6 +231,19 @@ const createStar = (nameStar) => {
   star.classList.add('stars__one');
   star.innerHTML = `<img src="../src/img/${nameStar}.svg">`;
   document.querySelector('.stars').append(star);
+}
+
+const createSmile = (name, countError) => {
+  let smileDiv = document.createElement('div');
+  smileDiv.classList.add('result');
+  smileDiv.innerHTML = `<p>${countError} errors</p><img src='./src/img/${name}.jpg'>`;
+  document.querySelector('#innerVocabulary').append(smileDiv);
+  createSound(`./src/audio/${name}.mp3`);
+  items.states.namePage = 'main';
+  setTimeout(() => {
+    newPage('main');
+    changeButtonGame();
+  }, 2000);
 }
 
 const shuffle = (arr) => {
