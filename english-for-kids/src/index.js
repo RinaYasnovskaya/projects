@@ -1,7 +1,7 @@
-import { cards } from './js/cards';
-import { Card } from './js/Card';
+import { switchState } from './js/switchState';
+import { newPage } from './js/newPage';
 
-const items = {
+export const items = {
   elements: {
     burgerList: [],
     main: null,
@@ -33,42 +33,6 @@ document.querySelector('.switcher').addEventListener('click', () => {
     });
   }
 });
-
-// flip img
-const flipImg = () => {
-  document.querySelectorAll('.card-container').forEach(elem => {
-    elem.addEventListener('click', (event) => {
-      if (event.target.alt === 'rotate') {
-        elem.classList.add('transform');
-      }
-    });
-    elem.addEventListener('mouseleave', () => {
-      elem.classList.remove('transform');
-    });
-  });  
-}
-
-// switch state imgs play\train
-const switchState = () => {
-  if (document.querySelector('#switcher').checked) {
-    document.querySelectorAll('.rotate, .card-name').forEach((elem) => {
-      elem.classList.add('hidden');
-    });
-    document.querySelector('.button-start').classList.remove('hidden');
-    document.querySelectorAll('.front').forEach((elem) => {
-      elem.classList.add('cover');
-    });
-    playGame(); 
-  } else {
-    document.querySelectorAll('.rotate, .card-name').forEach((elem) => {
-      elem.classList.remove('hidden');
-    });
-    document.querySelector('.button-start').classList.add('hidden');
-    document.querySelectorAll('.front').forEach((elem) => {
-      elem.classList.remove('cover');
-    });
-  }
-}
 
 // change state when we click on burger span
 document.addEventListener('click',  () => {
@@ -103,180 +67,6 @@ const menuLinks = () => {
   });
 }
 
-const newPage = (namePage) => {
-  if (namePage === 'main') {
-    items.elements.vocabulary.style.display = 'none';
-    items.elements.main.style.display = 'block';
-  } else {
-    items.elements.vocabulary.style.display = 'block';
-    items.elements.main.style.display = 'none';
-  }
-  items.elements.burgerList.forEach((elem) => {
-    elem.classList.remove('active');
-    if (namePage === elem.name) {
-      elem.classList.add('active');
-    }
-  });
-  if (items.states.namePage !== 'main') {
-    getWrapper('#innerVocabulary');
-    generateCards(cards).forEach((elem) => [
-      document.getElementById('innerVocabulary').append(elem.generateCard())
-    ]);
-    flipImg();
-    switchState();
-    soundOn();
-    countClickTrain();
-    changeButtonGame();
-  }
-}
-
-const generateCards = (cards) => {
-  let allCards = [];
-  cards.forEach((item) => {
-    if (cards.indexOf(item) === +items.states.namePage) {
-      item.forEach((elem) => {
-        allCards.push(new Card(elem));
-      });
-    }
-  });
-  return allCards;
-}
-
-// clear wrapper every time
-const getWrapper = (nameWrap) => {
-  const editWrap = document.querySelector(`${nameWrap}`);
-  editWrap.innerHTML = '';
-  return editWrap;
-}
-
-const soundOn = () => {
-  document.querySelectorAll('.front').forEach((elem) => {
-    elem.addEventListener('click', (event) => {
-      if (!document.querySelector('#switcher').checked) {
-        createSound(event.target.closest(`.card-container`).dataset.audio);
-      }
-    });
-  });
-}
-
-const createSound = (audioSrc) => {
-  const audio = new Audio(audioSrc);
-  audio.autoplay = true; 
-}
-
-const changeButtonGame = () => {
-  getWrapper('.button');
-  document.querySelector('.button').textContent = 'Start Game';
-  document.querySelector('.button').classList.remove('button-repeat');
-  document.querySelector('.button').classList.remove('hidden');
-  items.states.endGame = false;
-}
-
-const playGame = () => {
-  let arrSounds = [];
-  let step = 0,
-      countError = 0,
-      countCorrect = 0;
-    
-  document.querySelectorAll('.voc-card').forEach((elem) => {
-    if (elem.dataset.audio) {
-      arrSounds.push(elem.dataset.audio);
-    }
-  });
-
-  let shuffleArr = shuffle(arrSounds);
-
-  document.querySelector('.button').addEventListener('click', () => {
-    document.querySelector('.button').innerHTML = '<img src="./src/img/repeat.svg">';
-    document.querySelector('.button').classList.add('button-repeat'); 
-    createSound(shuffleArr[step]);    
-  });
-  document.querySelectorAll('.voc-card').forEach((elem) => {
-    elem.addEventListener('click', () => {
-      if(shuffleArr[step] === elem.dataset.audio) {
-        countClickPlay(elem.dataset.audio, 'correct');
-        elem.classList.add('inactive');
-        step++;
-        createSound('./src/audio/correct.mp3');
-        createStar('star-win');
-        setTimeout(() => { createSound(shuffleArr[step]); }, 1000);
-        if (step === arrSounds.length) {
-          items.states.endGame = true;
-          setTimeout(() => { 
-            getWrapper('.stars');
-            getWrapper('#innerVocabulary');
-            document.querySelector('.button').classList.add('hidden');
-            if (countError <= 0) {
-              createSmile("success", countError);
-            } else {
-              createSmile("failure", countError);
-            }
-          }, 1000);
-        }
-      } else {
-        if (!elem.classList.contains('inactive')) {
-          countClickPlay(shuffleArr[step], 'error');
-          countError++;
-          createSound('./src/audio/error.mp3');
-          createStar('star');
-        }
-      }
-    })
-  });
-}
-
-const createStar = (nameStar) => {
-  let star = document.createElement('div');
-  star.classList.add('stars__one');
-  star.innerHTML = `<img src="../src/img/${nameStar}.svg">`;
-  document.querySelector('.stars').append(star);
-}
-
-const createSmile = (name, countError) => {
-  let smileDiv = document.createElement('div');
-  smileDiv.classList.add('result');
-  smileDiv.innerHTML = `<p>${countError} errors</p><img src='./src/img/${name}.jpg'>`;
-  document.querySelector('#innerVocabulary').append(smileDiv);
-  createSound(`./src/audio/${name}.mp3`);
-  items.states.namePage = 'main';
-  setTimeout(() => {
-    newPage('main');
-    changeButtonGame();
-  }, 2000);
-}
-
-const shuffle = (arr) => {
-  for (let i = arr.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
-
-const countClickTrain = () => {
-  document.querySelectorAll('.voc-card').forEach((item) => {
-    item.addEventListener('click', () => {
-      if (!document.querySelector('#switcher').checked) {
-        for (let i=0; i<cards.length; i++) {
-          if (item.dataset.audio === cards[items.states.namePage][i]['audioSrc']) {
-            cards[items.states.namePage][i]['train'] += 1;
-            localStorage.setItem('cards', JSON.stringify(cards));
-          }
-        }
-      } 
-    })
-  })
-}
-
-const countClickPlay = (src, nameParam) => {
-  for (let i=0; i< cards.length; i++) {
-    if (src === cards[items.states.namePage][i]['audioSrc']) {
-      cards[items.states.namePage][i][`${nameParam}`] += 1;
-      localStorage.setItem('cards', JSON.stringify(cards));
-    }
-  }
-}
-
 const init = () => {
   items.elements.burgerList = document.querySelectorAll('.menu__item');
   items.elements.main = document.getElementById('main');
@@ -289,7 +79,6 @@ const init = () => {
   // localStorage.setItem('cards', JSON.stringify(cards));
   // let rr = JSON.parse(localStorage.getItem('cards'));
   // console.log(rr);
-  
 }
 
 window.onload = () => {
