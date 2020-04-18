@@ -124,7 +124,10 @@ const newPage = (namePage) => {
     flipImg();
     switchState();
     soundOn();
-    playGame(); 
+    if (document.querySelector('#switcher').checked) {
+      playGame(); 
+    }
+    countClickTrain();
   }
 }
 
@@ -179,7 +182,7 @@ const playGame = () => {
   let arrSounds = [];
   let words = [];
 
-  document.querySelectorAll('.card-container').forEach((elem) => {
+  document.querySelectorAll('.voc-card').forEach((elem) => {
     if (elem.dataset.audio) {
       arrSounds.push(elem.dataset.audio);
     }
@@ -254,6 +257,21 @@ const shuffle = (arr) => {
   return arr;
 }
 
+const countClickTrain = () => {
+  document.querySelectorAll('.voc-card').forEach((item) => {
+    if (!document.querySelector('#switcher').checked) {
+      item.addEventListener('click', () => {
+        for (let i=0; i<cards.length; i++) {
+          if (item.dataset.audio === cards[items.states.namePage][i]['audioSrc']) {
+            cards[items.states.namePage][i]['train'] += 1;
+            localStorage.setItem('cards', JSON.stringify(cards));
+          }
+        }
+      })
+    }
+  })
+}
+
 const init = () => {
   items.elements.burgerList = document.querySelectorAll('.menu__item');
   items.elements.main = document.getElementById('main');
@@ -262,6 +280,11 @@ const init = () => {
 
   newPage(items.states.namePage);
   menuLinks();
+
+  // localStorage.setItem('cards', JSON.stringify(cards));
+  // let rr = JSON.parse(localStorage.getItem('cards'));
+  // console.log(rr);
+  
 }
 
 window.onload = () => {
