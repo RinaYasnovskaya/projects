@@ -9,7 +9,8 @@ export class Statistic {
 
   generateStatistic() {
     let template = '';
-    const nextLina = document.createElement('tr');
+    const nextLine = document.createElement('tr');
+    nextLine.className = 'line';
 
     template += `<td class="td-word">${this.word}-${this.translation}</td>`;
     template += `<td>${this.train}</td>`;
@@ -22,8 +23,8 @@ export class Statistic {
     }
 
     template += `<td>${Math.floor(percent)}%</td>`;
-    nextLina.innerHTML = template;
+    nextLine.innerHTML = template;
 
-    return nextLina;
+    return nextLine;
   }
 }

@@ -3,11 +3,12 @@ export const generateButtons = () => {
   let sortBlock = document.createElement('div');
   sortBlock.className = 'sortBlock';
 
-  const nameButtons = ['sort alphabet', 'sort train', 'sort error', 'sort correct', 'sort percent', 'RESET'];
+  const nameButtons = ['sort-alphabet', 'sort-train', 'sort-error', 'sort-correct', 'sort-percent', 'reset'];
 
   nameButtons.forEach((elem) => {
     let button = document.createElement('button');
-    button.textContent = `${elem}`;
+    button.id = elem;
+    button.textContent = elem;
     sortBlock.append(button);
   });
 

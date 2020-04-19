@@ -8,6 +8,7 @@ import { getWrapper, changeButtonGame } from "./changeElements";
 import { flipImg } from "./flipImg";
 import { soundOn } from "./sounds";
 import { countClickTrain } from "./countClicks";
+import { resetButton } from '../index';
 
 export const newPage = (namePage) => {
   if (namePage === 'main') {
@@ -29,6 +30,7 @@ export const newPage = (namePage) => {
     getWrapper('#innerVocabulary');
     generateTable(localCards);
     generateButtons();
+    resetButton();
   } else  {
     getWrapper('#innerVocabulary');
     generateCards(cards).forEach((elem) => {

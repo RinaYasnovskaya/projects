@@ -67,6 +67,23 @@ const menuLinks = () => {
   });
 }
 
+export const resetButton = () => {
+  document.getElementById('reset').addEventListener('click', () => {
+    let lines = JSON.parse(localStorage.getItem('cards'));
+
+    lines.forEach((elem) => {
+      elem.forEach((item) => {
+        item['train'] = 0;
+        item['error'] = 0;
+        item['correct'] = 0;
+      });
+    });
+
+    localStorage.setItem('cards', JSON.stringify(lines));
+    newPage(items.states.namePage);
+  });
+}
+
 const init = () => {
   items.elements.burgerList = document.querySelectorAll('.menu__item');
   items.elements.main = document.getElementById('main');
