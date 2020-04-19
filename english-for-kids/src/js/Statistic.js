@@ -11,7 +11,7 @@ export class Statistic {
     let template = '';
     const nextLina = document.createElement('tr');
 
-    template += `<td>${this.word}-${this.translation}</td>`;
+    template += `<td class="td-word">${this.word}-${this.translation}</td>`;
     template += `<td>${this.train}</td>`;
     template += `<td>${this.error}</td>`;
     template += `<td>${this.correct}</td>`;

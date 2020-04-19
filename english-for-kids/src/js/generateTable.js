@@ -1,6 +1,6 @@
 import { Statistic } from './Statistic';
 
-export const generateTable = () => {
+export const generateTable = (localCards) => {
   const theadTitle = ['Word-Translation', 'Train', 'Error', 'Correct', 'Percent'];
 
   const table = document.createElement('table');
@@ -19,8 +19,6 @@ export const generateTable = () => {
   line.innerHTML = template;
   thead.append(line);
   table.append(thead);
-  
-  let localCards = JSON.parse(localStorage.getItem('cards'));
 
   generateLines(localCards).forEach((elem) => {
     table.append(elem.generateStatistic());

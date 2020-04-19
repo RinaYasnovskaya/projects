@@ -3,6 +3,7 @@ import { switchState } from './switchState';
 import { items } from '../index';
 import { generateTable } from "./generateTable";
 import { generateCards } from "./generateCards";
+import { generateButtons } from "./generateButtons";
 import { getWrapper, changeButtonGame } from "./changeElements";
 import { flipImg } from "./flipImg";
 import { soundOn } from "./sounds";
@@ -24,8 +25,10 @@ export const newPage = (namePage) => {
     }
   });
   if (items.states.namePage === 'statistic') {
+    let localCards = JSON.parse(localStorage.getItem('cards'));
     getWrapper('#innerVocabulary');
-    generateTable();
+    generateTable(localCards);
+    generateButtons();
   } else  {
     getWrapper('#innerVocabulary');
     generateCards(cards).forEach((elem) => {
