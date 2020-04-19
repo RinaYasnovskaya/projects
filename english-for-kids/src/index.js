@@ -1,5 +1,6 @@
 import { switchState } from './js/switchState';
 import { newPage } from './js/newPage';
+import { cards } from './js/cards';
 
 export const items = {
   elements: {
@@ -92,6 +93,7 @@ const init = () => {
 
   newPage(items.states.namePage);
   menuLinks();
+  localStorage.setItem('cards', JSON.stringify(cards));
 }
 
 window.onload = () => {
