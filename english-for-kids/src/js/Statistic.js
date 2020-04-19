@@ -21,8 +21,7 @@ export class Statistic {
       percent = 0;
     }
 
-    template += `<td>${percent}%</td>`;
-
+    template += `<td>${Math.floor(percent)}%</td>`;
     nextLina.innerHTML = template;
 
     return nextLina;
