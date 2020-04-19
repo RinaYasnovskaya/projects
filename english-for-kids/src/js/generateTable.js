@@ -1,5 +1,4 @@
 import { Statistic } from './Statistic';
-import { cards } from './cards';
 
 export const generateTable = () => {
   const theadTitle = ['Word-Translation', 'Train', 'Error', 'Correct', 'Percent'];
@@ -9,12 +8,11 @@ export const generateTable = () => {
 
   const thead = document.createElement('thead');
   thead.className = 'table__thead';
-
   const line = document.createElement('tr');
   line.className = 'thead__items';
 
   let template = '';
-  for (let i = 0; i < (theadTitle.length-1); i++) {
+  for (let i = 0; i < theadTitle.length; i++) {
     template += `<td>${theadTitle[i]}</td>`;
   }
 

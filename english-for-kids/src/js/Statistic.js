@@ -16,6 +16,13 @@ export class Statistic {
     template += `<td>${this.error}</td>`;
     template += `<td>${this.correct}</td>`;
 
+    let percent = (this.error/(this.error+this.correct))*100;
+    if (isNaN(percent)) {
+      percent = 0;
+    }
+
+    template += `<td>${percent}%</td>`;
+
     nextLina.innerHTML = template;
 
     return nextLina;
