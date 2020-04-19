@@ -22,8 +22,8 @@ export const generateTable = (localCards) => {
 
   generateLines(localCards).forEach((elem) => {
     table.append(elem.generateStatistic());
-  })
- 
+  });
+  
   document.getElementById('innerVocabulary').append(table);
 }
 
