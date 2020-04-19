@@ -1,5 +1,6 @@
 import { Card } from './Card';
 import { items } from '../index';
+import cards from './cards';
 
 export const generateCards = (cards) => {
   let allCards = [];

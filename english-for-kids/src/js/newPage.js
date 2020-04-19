@@ -1,6 +1,7 @@
 import { cards } from './cards';
 import { switchState } from './switchState';
 import { items } from '../index';
+import { generateTable } from "./generateTable";
 import { generateCards } from "./generateCards";
 import { getWrapper, changeButtonGame } from "./changeElements";
 import { flipImg } from "./flipImg";
@@ -22,18 +23,18 @@ export const newPage = (namePage) => {
       elem.classList.add('active');
     }
   });
-  if (items.states.namePage !== 'main') {
+  if (items.states.namePage === 'statistic') {
     getWrapper('#innerVocabulary');
-    generateCards(cards).forEach((elem) => [
+    generateTable();
+  } else  {
+    getWrapper('#innerVocabulary');
+    generateCards(cards).forEach((elem) => {
       document.getElementById('innerVocabulary').append(elem.generateCard())
-    ]);
+    });
     flipImg();
     switchState();
     soundOn();
     countClickTrain();
     changeButtonGame();
-  } else if (items.states.namePage === 'statistic') {
-    getWrapper('#innerVocabulary');
-    // TODO
-  }
+  } 
 };

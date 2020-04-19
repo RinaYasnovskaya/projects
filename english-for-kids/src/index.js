@@ -75,10 +75,8 @@ const init = () => {
 
   newPage(items.states.namePage);
   menuLinks();
-
   // localStorage.setItem('cards', JSON.stringify(cards));
   // let rr = JSON.parse(localStorage.getItem('cards'));
-  // console.log(rr);
 }
 
 window.onload = () => {
