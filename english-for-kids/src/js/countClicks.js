@@ -12,7 +12,8 @@ export const countClickTrain = () => {
 };
 export const countClick = (src, nameParam) => {
   for (let i = 0; i < cards.length; i++) {
-    if (src === cards[items.states.namePage][i]['audioSrc']) {
+    let positionAudioProp = cards[items.states.namePage][i]['audioSrc'];
+    if (src === positionAudioProp) {
       cards[items.states.namePage][i][`${nameParam}`] += 1;
     }
   }
