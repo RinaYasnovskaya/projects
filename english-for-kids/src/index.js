@@ -23,35 +23,36 @@ const colorPlay = '#E86007';
 document.querySelector('.switcher').addEventListener('click', () => {
   switchState();
   if (document.querySelector('#switcher').checked) {
-    document.querySelector('.menu').style.backgroundColor = `${colorTrain}`;
+    document.querySelector('.menu').style.backgroundColor = colorTrain;
     document.querySelectorAll('.info').forEach((elem) => {
-      elem.style.backgroundColor = `${colorTrain}`;
+      elem.style.backgroundColor = colorTrain;
     });
   } else {
-    document.querySelector('.menu').style.backgroundColor = `${colorPlay}`;
+    document.querySelector('.menu').style.backgroundColor = colorPlay;
     document.querySelectorAll('.info').forEach((elem) => {
-      elem.style.backgroundColor = `${colorPlay}`;
+      elem.style.backgroundColor = colorPlay;
     });
   }
 });
 
 // change state when we click on burger span
-document.addEventListener('click',  () => {
-  if (document.querySelector('#burger__toggle').checked) {
-    document.querySelector('#burger__toggle').checked = !items.states.checkBurger;
-    items.states.checkBurger = !items.states.checkBurger;
+document.addEventListener('click', (event) => {
+  if(event.target.id === 'burger-label' || event.target.id === 'burger') {
+    console.log('good' + event.target.id);
+    if (document.querySelector('#burger__toggle').checked) {
+      document.querySelector('#burger__toggle').checked = false;
+    } else {
+      document.querySelector('#burger__toggle').checked = true;
+    }
   }
-  document.querySelector('.burger__button').addEventListener('click', () => {
-    document.querySelector('#burger__toggle').checked = items.states.checkBurger;
-    items.states.checkBurger = !items.states.checkBurger;
-  });
-})
+  
+});
 
 // create new page when we click on burger links
 document.querySelector('.menu').addEventListener('click', (event) => {
   items.elements.burgerList.forEach((elem) => {
     if (elem.name === event.target.name) {
-      document.querySelector('#burger__toggle').checked = items.states.checkBurger;
+      document.querySelector('#burger__toggle').checked = false;
       items.states.namePage = event.target.name
       newPage(items.states.namePage);
     }
