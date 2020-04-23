@@ -21,7 +21,7 @@
   }
 }
 
-.sortBlock{
+.sort-block{
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -38,7 +38,7 @@
 }
 
 @media (max-width: 500px) {
-  .sortBlock button{
+  .sort-block button{
     font-size: 15px;
   }
 }
