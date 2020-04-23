@@ -32,6 +32,7 @@ export const newPage = (namePage) => {
     generateTable(localCards);
     generateButtons();
     resetButton();
+    document.querySelector('.button-start').classList.add('hidden');
   } else  {
     getWrapper('.stars');
     getWrapper('#innerVocabulary');
