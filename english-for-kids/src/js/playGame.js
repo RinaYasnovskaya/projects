@@ -21,6 +21,7 @@ export const playGame = () => {
     createSound(shuffleArr[step]);
     startFlag = true;
   });
+  
   document.querySelectorAll('.voc-card').forEach((elem) => {
     elem.addEventListener('click', () => {
       if (shuffleArr[step] === elem.dataset.audio && startFlag) {

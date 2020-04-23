@@ -8,6 +8,8 @@ export const soundOn = () => {
   });
 };
 export const createSound = (audioSrc) => {
-  const audio = new Audio(audioSrc);
+  const audio = document.querySelector('.audio');
+  audio.src = audioSrc;
   audio.autoplay = true;
+  console.log(audio);
 };
