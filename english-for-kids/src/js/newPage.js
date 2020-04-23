@@ -10,6 +10,7 @@ import { soundOn } from "./sounds";
 import { countClickTrain } from "./countClicks";
 
 export const newPage = (namePage) => {
+  items.states.endGame = true;
   if (namePage === 'main') {
     items.elements.vocabulary.style.display = 'none';
     items.elements.main.style.display = 'block';
@@ -25,12 +26,14 @@ export const newPage = (namePage) => {
     }
   });
   if (items.states.namePage === 'statistic') {
+    getWrapper('.stars');
     let localCards = JSON.parse(localStorage.getItem('cards'));
     getWrapper('#innerVocabulary');
     generateTable(localCards);
     generateButtons();
     resetButton();
   } else  {
+    getWrapper('.stars');
     getWrapper('#innerVocabulary');
     generateCards(cards).forEach((elem) => {
       document.getElementById('innerVocabulary').append(elem.generateCard())

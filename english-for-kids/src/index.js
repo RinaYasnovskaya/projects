@@ -38,12 +38,13 @@ document.querySelector('.switcher').addEventListener('click', () => {
 // change state when we click on burger span
 document.addEventListener('click', (event) => {
   if(event.target.id === 'burger-label' || event.target.id === 'burger') {
-    console.log('good' + event.target.id);
     if (document.querySelector('#burger__toggle').checked) {
       document.querySelector('#burger__toggle').checked = false;
     } else {
       document.querySelector('#burger__toggle').checked = true;
     }
+  } else if (event.target.id !== 'menu') {
+    document.querySelector('#burger__toggle').checked = false;
   }
   
 });
