@@ -93,7 +93,6 @@ const init = () => {
 
   newPage(items.states.namePage);
   menuLinks();
-  localStorage.setItem('cards', JSON.stringify(cards));
 }
 
 window.onload = () => {

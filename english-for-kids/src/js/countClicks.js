@@ -14,7 +14,7 @@ export const countClick = (src, nameParam) => {
   for (let i = 0; i < cards.length; i++) {
     if (src === cards[items.states.namePage][i]['audioSrc']) {
       cards[items.states.namePage][i][`${nameParam}`] += 1;
-      localStorage.setItem('cards', JSON.stringify(cards));
     }
   }
+  localStorage.setItem('cards', JSON.stringify(cards));
 };
