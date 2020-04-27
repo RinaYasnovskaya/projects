@@ -11,33 +11,29 @@
   </header>
   <main class="wrapper">
     <form class="search">
-      <input class="search-input" type="text" placeholder="search movie" autofocus="">
-      <button class="search-button" type="submit">Search</button>
-      <span data-name="delete" class="delete tooltip"></span>
+      <input class="search__input" type="text" placeholder="search movie" autofocus="">
+      <button class="search__button" type="submit">Search</button>
+      <span data-name="delete" class="search__delete"></span>
     </form>
     <p class="result"></p>
     <div class="swiper">
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">Slide 1</div>
-          <div class="swiper-slide">Slide 2</div>
-          <div class="swiper-slide">Slide 3</div>
-          <div class="swiper-slide">Slide 4</div>
-          <div class="swiper-slide">Slide 5</div>
-          <div class="swiper-slide">Slide 6</div>
-          <div class="swiper-slide">Slide 7</div>
-          <div class="swiper-slide">Slide 8</div>
-          <div class="swiper-slide">Slide 9</div>
-          <div class="swiper-slide">Slide 10</div>
+      <div class="swiper__container">
+        <div class="swiper__wrapper">
+          <div class="swiper__slide slide">
+            <a href="" class="slide__header">Slide 1</a>
+            <div class="poster">Slide 1</div>
+            <div class="year">2000</div>
+            <div class="imbscore">8.9</div>
+          </div>
+          <div class="swiper__pagination"></div>
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+        <div class="swiper__button-next"></div>
+        <div class="swiper__button-prev"></div>
       </div>
     </div>
   </main>
   <footer class="footer">
-    <div class="footer-container">
+    <div class="footer__container">
       <a href="https://rs.school/" class="rss">
         RS School 2020q1
       </a>      

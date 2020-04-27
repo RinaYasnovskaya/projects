@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 // const load = require('audio-loader');
@@ -25,12 +25,11 @@ function setDMode() {
 }
 
 const config = {
-  target: "web",
-  entry: ['./src/index.js'],
-  //, './src/sass/style.scss'
+  target: 'web',
+  entry: ['./src/index.js', './src/sass/style.scss'],
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'script.js'
+    filename: 'script.js',
   },
   mode: setDMode(),
   devtool: setDevTool(),
@@ -156,7 +155,7 @@ const config = {
       filename: './src/sass/style.css',
     }),
     new CopyWebpackPlugin([
-      // {from: './src/img', to: './src/img/'},
+      {from: './src/img', to: './src/img/'},
       // {from: './src/audio', to: './src/audio/'},
     ]),
   ],
