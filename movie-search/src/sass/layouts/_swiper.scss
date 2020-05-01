@@ -5,16 +5,12 @@
 .swiper-slide{
   text-align: center;
   font-size: 18px;
-  background: #fff;
-  background-color: green;
-  margin-right: 80px !important;
   max-width: 300px;
   width: 300px !important;
 }
 
 .slide{
   border: 0;
-  // margin: 10px 0px;
   
   &__header{
     display: block;
@@ -51,4 +47,9 @@
   text-align: center;
   padding: 5px;
   margin-bottom: 20px;
+  &__star{
+    img {
+      width: 16px;
+    }
+  }
 }

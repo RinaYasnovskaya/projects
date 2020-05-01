@@ -22,6 +22,18 @@
   }
 }
 
+.github{
+  position: relative;
+  display: block;
+  span{
+    position: absolute;
+    right: 174px;
+    img{
+      width: 30px;
+    }
+  }
+}
+
 @media (max-width: 700px) {
   .footer__container {
     max-width: 440px;

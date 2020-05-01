@@ -3,29 +3,8 @@ import Swiper from '../../node_modules/swiper/js/swiper';
 
 const startSwiper = () => {
   const mySwiper = new Swiper('.swiper-container', {
-    breakpoints: {
-      50: {
-        slidesPerView: 1,
-        spaceBetween: 10,
-      },
-      640: {
-        slidesPerView: 2,
-        spaceBetween: 10,
-      },
-      960: {
-        slidesPerView: 3,
-        spaceBetween: 10,
-      },
-      1200: {
-        slidesPerView: 4,
-        spaceBetween: 10,
-      },
-    },
-    // centeredSlides: true,
-    spaceBetween: 10,
-    // slidesPerGroup: 3,
-    loop: true,
-    // loopFillGroupWithBlank: true,
+    slidesPerView: 'auto',
+    spaceBetween: 80,
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
