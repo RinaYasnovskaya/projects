@@ -1,5 +1,3 @@
-import startSwiper from './js/swiper';
+import './js/swiper';
 
-window.onload = () => {
-  startSwiper();
-};
+// import startSwiper from './js/swiper';
