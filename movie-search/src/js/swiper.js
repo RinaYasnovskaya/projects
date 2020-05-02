@@ -25,8 +25,6 @@ const startSwiper = () => {
   return mySwiper;
 };
 
-// export default startSwiper;
-
 window.onload = () => {
   startSwiper();
   createCard('dream');
