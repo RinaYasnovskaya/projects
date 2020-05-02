@@ -1,6 +1,7 @@
 import '../../node_modules/swiper/css/swiper.min.css';
 import { renderCards } from './renderCards';
 import { startSwiper } from './startSwiper';
+import './clearInput';
 
 // apikey = 23d60cc6
 export let page = 1;
@@ -35,7 +36,6 @@ const nextSlides = (title) => {
     }
   });
 };
-
 
 window.onload = () => {
   createCard('dream');
