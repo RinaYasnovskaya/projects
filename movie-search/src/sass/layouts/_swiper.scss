@@ -16,6 +16,7 @@
     display: block;
     height: 43px;
     margin-bottom: 15px;
+    overflow-x: hidden;
     overflow-y: hidden;
     background-color: #fff;
     color: #000;
@@ -52,4 +53,10 @@
       width: 16px;
     }
   }
+}
+
+.swiper-button-disabled {
+  opacity: 1 !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
 }
