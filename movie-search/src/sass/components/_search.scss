@@ -9,7 +9,8 @@
   height: 45px;
 
   & &__input{
-    width: calc(100% - 90px);
+    // width: calc(100% - 90px);
+    width: 100%;
     max-width: 1350px;
   }
 
@@ -22,7 +23,7 @@
     font-size: 22px;
     height: 45px;
     outline: none;
-    padding: 8px 105px 8px 15px;
+    padding: 8px 105px 8px 50px;
   }
 
   &__button{
@@ -41,7 +42,7 @@
     outline: none;
   }
 
-  &__delete, &__keyboard{
+  &__delete, &__keyboard, &__magnifier{
     position: absolute;
     width: 48px;
     height: 48px;
@@ -54,8 +55,26 @@
     transition: .2s;
   }
   &__keyboard{
-    right: 100px;
-    top: -5px;
+    right: 104px;
+    top: -10px;
+    width: 64px;
+    img{
+      width: 100%;
+    }
+  }
+  &__delete{
+    right: 164px;
+    img{
+      width: 100%;
+    }
+  }
+  &__magnifier{
+    top: 4px;
+    left: 10px;
+    opacity: .4;
+    img{
+      width: 80%;
+    }
   }
 }
 
@@ -69,4 +88,20 @@
   line-height: 40px;
   text-align: center;
   color: $color-button;
+}
+
+@media (max-width: 700px) {
+  .search{
+    flex-wrap: wrap;
+    &__keyboard{
+      display: none;
+    }
+    &__delete{
+      right: 1%;
+    }
+    &__button{
+      margin-top: 10px;
+      width: 100%;
+    }
+  }
 }

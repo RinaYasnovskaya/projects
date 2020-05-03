@@ -39,4 +39,5 @@ const nextSlides = (title) => {
 
 window.onload = () => {
   createCard('dream');
+
 };

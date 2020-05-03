@@ -30,7 +30,7 @@
 
 .swiper-container{
   width: 100%;
-  height: 100%;
+  height: 605px;
 }
 
 .poster{
@@ -56,7 +56,6 @@
 }
 
 .swiper-button-disabled {
-  opacity: 1 !important;
-  cursor: pointer !important;
+  // cursor: pointer !important;
   pointer-events: auto !important;
 }
