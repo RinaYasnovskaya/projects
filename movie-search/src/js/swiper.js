@@ -2,9 +2,11 @@ import '../../node_modules/swiper/css/swiper.min.css';
 import { renderCards } from './renderCards';
 import { startSwiper } from './startSwiper';
 import './clearInput';
+import { prevSlides } from './prevSlides';
 
 // apikey = 23d60cc6
 export let page = 1;
+const result = document.querySelector('.result');
 
 async function createCard(title) {
   const resultTemplate = await renderCards(title);
@@ -15,48 +17,42 @@ async function createCard(title) {
 
 document.querySelector('.search__button').addEventListener('click', async (event) => {
   event.preventDefault();
-  page = 1;
   const title = document.querySelector('.search__input').value;
   const slider = document.querySelector('.swiper-container').swiper;
-  if (title) {
+  if (title && title !== ' ') {
+    result.innerText = '';
+    page = 1;
     slider.removeAllSlides();
     const innerTemp = await renderCards(title);
     slider.appendSlide(innerTemp);
     nextSlides(title);
+  } 
+  else {
+    result.innerText = 'Please enter movie title';
   }
 });
 
 const nextSlides = (title) => {
-  document.querySelector('.swiper-button-next').addEventListener('click', async () => {
+  document.querySelector('.swiper-container').addEventListener('mousedown', async () => {
+    result.innerText = '';
     const slider = document.querySelector('.swiper-container').swiper;
-    if (slider.isEnd) {
-      page += 1;
-      try{
-        const innerTemp = await renderCards(title);
-        slider.appendSlide(innerTemp);
+      if (slider.isEnd) {
+        page += 1;
+        try{
+          const innerTemp = await renderCards(title);
+          slider.appendSlide(innerTemp);
+        }
+        catch (err) {
+          result.innerText = 'You have reached the end of the page';
+          const disabledButton = document.querySelector('.swiper-button-disabled');
+          disabledButton.style.pointerEvents = 'none';
+          disabledButton.style.opacity = '.35';
+        }
       }
-      catch (err) {
-        document.querySelector('.result').innerText = 'You have reached the end of the page';
-        const disabledButton = document.querySelector('.swiper-button-disabled');
-        disabledButton.style.pointerEvents = 'none';
-        disabledButton.style.opacity = '.35';
-        
-      } 
-    }
-    prevSlides();
+      prevSlides();
   });
-};
-
-const prevSlides = () => {
-  document.querySelector('.swiper-button-prev').addEventListener('click', () => {
-    const disabledButton = document.querySelector('.swiper-button-next');
-    disabledButton.style.pointerEvents = '';
-    disabledButton.style.opacity = '';
-    document.querySelector('.result').innerText = '';
-  });
-}
+}; // TODO: add swipe in future
 
 window.onload = () => {
   createCard('dream');
-
 };
