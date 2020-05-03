@@ -12,20 +12,32 @@ async function createCard(title) {
   const resultTemplate = await renderCards(title);
   document.querySelector('.swiper-wrapper').innerHTML = resultTemplate;
   nextSlides(title);
+  renderCards()
+    .then(() => {
+      document.querySelector('.preloader').classList.add('preloader--hidden');
+      document.querySelector('.preloader').classList.remove('preloader--visible');
+    });
   startSwiper();
 }
 
 document.querySelector('.search__button').addEventListener('click', async (event) => {
   event.preventDefault();
+  document.querySelector('.preloader').classList.remove('preloader--hidden');
+  document.querySelector('.preloader').classList.add('preloader--visible');
   const title = document.querySelector('.search__input').value;
   const slider = document.querySelector('.swiper-container').swiper;
   if (title && title !== ' ') {
     result.innerText = '';
-    page = 1;
+    page = 1
     slider.removeAllSlides();
     const innerTemp = await renderCards(title);
     slider.appendSlide(innerTemp);
     nextSlides(title);
+    renderCards()
+      .then(() => {
+        document.querySelector('.preloader').classList.add('preloader--hidden');
+        document.querySelector('.preloader').classList.remove('preloader--visible');
+      });
   } 
   else {
     result.innerText = 'Please enter movie title';
@@ -52,6 +64,10 @@ const nextSlides = (title) => {
       prevSlides();
   });
 }; // TODO: add swipe in future
+
+const preloader = () => {
+
+}
 
 window.onload = () => {
   createCard('dream');
