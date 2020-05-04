@@ -3,7 +3,9 @@ import { page } from './swiper';
 export async function renderCards(title) {
   const response = await fetch(`http://www.omdbapi.com/?apikey=23d60cc6&page=${page}&s=${title}`);
   const resArray = await response.json();
+
   let resTemplate = '';
+  
   for (const item of resArray.Search) {
     const responseIMD = await fetch(`https://www.omdbapi.com/?apikey=23d60cc6&i=${item.imdbID}`);
     const resIMD = await responseIMD.json();
