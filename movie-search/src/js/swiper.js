@@ -60,16 +60,16 @@ document.querySelector('.swiper-container').addEventListener('mousedown', async 
   const slider = document.querySelector('.swiper-container').swiper;
     if (slider.isEnd) {
       page += 1;
-      try{
-        const innerTemp = await renderCards(title);
-        slider.appendSlide(innerTemp);
-      }
-      catch (err) {
-        result.innerText = 'You have reached the end of the page';
-        const disabledButton = document.querySelector('.swiper-button-disabled');
-        disabledButton.style.pointerEvents = 'none';
-        disabledButton.style.opacity = '.35';
-      }
+      renderCards(title)
+        .then((response) => {
+          slider.appendSlide(response);
+        })
+        .catch((err) => {
+          result.innerText = 'You have reached the end of the page';
+          const disabledButton = document.querySelector('.swiper-button-disabled');
+          disabledButton.style.pointerEvents = 'none';
+          disabledButton.style.opacity = '.35';
+        })
     }
     prevSlides();
 }); // TODO: add swipe in future
