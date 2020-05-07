@@ -5,26 +5,25 @@ import { prevSlides } from './prevSlides';
 import { createCard } from './createCard';
 import { showPreloader } from './showPreloader';
 import { hidePreload } from './hidePreload';
-// apikey imd = 23d60cc6
+// apikey imd = 231f8e38
 const yandApiKey = 'trnsl.1.1.20200504T183529Z.cb3603e3ad5a2564.ae17d80755908eb850c5ec74d22ce14e1532b491';
 
 // global value
 export let page = 1;
 export let title = 'dream';
 const result = document.querySelector('.result');
-let countCLick = 0;
 
 document.querySelector('.search__button').addEventListener('click', async (event) => {
   event.preventDefault();
   const firstTitle = document.querySelector('.search__input').value;
   const slider = document.querySelector('.swiper-container').swiper;
-
+  document.querySelector('.swiper-button-next').style.display = 'block';
   if (firstTitle && firstTitle !== ' ') {
     const translateTitle = await fetch(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=${yandApiKey}
   &text=${firstTitle}&lang=ru-en`);
     const jsonTitle = await translateTitle.json();
 
-    title = jsonTitle.text[0];
+    title = (/^[0-9]+$/ig.test(firstTitle)) ? firstTitle : jsonTitle.text[0];
     result.innerText = '';
     page = 1;
     showPreloader();
@@ -56,44 +55,35 @@ document.querySelector('.search__button').addEventListener('click', async (event
   }
 });
 
-document.querySelector('.swiper-container').addEventListener('mousedown', async () => {
+document.querySelector('.swiper-button-next').addEventListener('click', async () => {
   result.innerText = '';
   const slider = document.querySelector('.swiper-container').swiper;
-    if (slider.isEnd) {
-      page += 1;
-      if(countCLick < 3) {
-        renderCards(title)
-        .then((resp) => {
-          return resp;
-        })
-        .then((response) => {
-          slider.appendSlide(response);
-        })
-        .then(() => {
-          document.querySelector('.swiper-button-next').style.display = 'block';
-        })
-        .catch((err) => {
-          result.innerText = 'You have reached the end of the page';
-          const disabledButton = document.querySelector('.swiper-button-disabled');
-          disabledButton.style.pointerEvents = 'none';
-          disabledButton.style.opacity = '.35';
-        })
-      } else {
-        document.querySelector('.swiper-button-next').style.display = 'none';
-        countCLick = 0;
-      }
-      
-    }
-    prevSlides();
+  innerActions(slider);
+  prevSlides();
 });
 
-document.querySelector('.swiper-button-next').addEventListener('click', () => {
+document.querySelector('.swiper-container').addEventListener('mousedown', (event) => {
   const slider = document.querySelector('.swiper-container').swiper;
-  if (slider.isEnd) { 
-    countCLick += 1;
-  }
+  innerActions(slider);
 });
 
+const innerActions = async (slider) => {
+  if (slider.isEnd) {
+    page += 1;
+    document.querySelector('.wait').style.display = 'block';
+    document.querySelector('.swiper-button-next').style.display = 'none';
+    try{
+      const resTemp = await renderCards(title);
+      slider.appendSlide(resTemp);
+      slider.slideNext();
+      document.querySelector('.swiper-button-next').style.display = 'block';
+      document.querySelector('.wait').style.display = 'none';
+    } catch(err) {
+      result.innerText = 'You have reached the end of the page';
+      document.querySelector('.wait').style.display = 'none';
+    }
+  }
+}
 
 window.onload = () => {
   createCard();

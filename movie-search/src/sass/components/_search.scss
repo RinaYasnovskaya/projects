@@ -1,12 +1,12 @@
 .search {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 25px;
-  width: 100%;
-  color: $color-main;
-  height: 45px;
+    display: flex;
+    margin: 0 auto 25px;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    color: $color-main;
+    height: 45px;
 
   & &__input{
     // width: calc(100% - 90px);
