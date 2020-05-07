@@ -12,6 +12,7 @@ const yandApiKey = 'trnsl.1.1.20200504T183529Z.cb3603e3ad5a2564.ae17d80755908eb8
 export let page = 1;
 export let title = 'dream';
 const result = document.querySelector('.result');
+let countCLick = 0;
 
 document.querySelector('.search__button').addEventListener('click', async (event) => {
   event.preventDefault();
@@ -60,9 +61,16 @@ document.querySelector('.swiper-container').addEventListener('mousedown', async 
   const slider = document.querySelector('.swiper-container').swiper;
     if (slider.isEnd) {
       page += 1;
-      renderCards(title)
+      if(countCLick < 3) {
+        renderCards(title)
+        .then((resp) => {
+          return resp;
+        })
         .then((response) => {
           slider.appendSlide(response);
+        })
+        .then(() => {
+          document.querySelector('.swiper-button-next').style.display = 'block';
         })
         .catch((err) => {
           result.innerText = 'You have reached the end of the page';
@@ -70,9 +78,22 @@ document.querySelector('.swiper-container').addEventListener('mousedown', async 
           disabledButton.style.pointerEvents = 'none';
           disabledButton.style.opacity = '.35';
         })
+      } else {
+        document.querySelector('.swiper-button-next').style.display = 'none';
+        countCLick = 0;
+      }
+      
     }
     prevSlides();
-}); // TODO: add swipe in future
+});
+
+document.querySelector('.swiper-button-next').addEventListener('click', () => {
+  const slider = document.querySelector('.swiper-container').swiper;
+  if (slider.isEnd) { 
+    countCLick += 1;
+  }
+});
+
 
 window.onload = () => {
   createCard();
