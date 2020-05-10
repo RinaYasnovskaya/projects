@@ -5,5 +5,5 @@ export const translateWord = async (word) => {
     &text=${word}&lang=ru-en`);
   const result = await translateTitle.json();
   
-  return result;
+  return result.text[0];
 };

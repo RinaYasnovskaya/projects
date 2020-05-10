@@ -26,7 +26,7 @@ document.querySelector('.search__button').addEventListener('click', async (event
 
   if (firstTitle && firstTitle !== ' ') {
     const jsonTitle = await translateWord(firstTitle);
-    title = (/^[0-9]+$/ig.test(firstTitle)) ? firstTitle : jsonTitle.text[0];
+    title = (/^[0-9]+$/ig.test(firstTitle)) ? firstTitle : jsonTitle;
 
     result.innerText = '';
     page = 1;
