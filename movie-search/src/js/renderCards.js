@@ -1,9 +1,9 @@
-// import { page } from './swiper';
+import { apikey } from './swiper';
 
 export async function renderCards(resArray) {
   let resTemplate = '';
   for (const item of resArray.Search) {
-    const responseIMD = await fetch(`https://www.omdbapi.com/?apikey=231f8e38&i=${item.imdbID}`);
+    const responseIMD = await fetch(`https://www.omdbapi.com/?apikey=${apikey}&i=${item.imdbID}`);
     const resIMD = await responseIMD.json();
 
     const poster = (item.Poster !== 'N/A') ? item.Poster : './src/img/none.png';
@@ -21,6 +21,4 @@ export async function renderCards(resArray) {
   }
   return resTemplate;
 }
-
-// <div class="poster" style="background-image:url('${poster}')"></div>
 

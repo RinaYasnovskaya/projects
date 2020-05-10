@@ -1,9 +1,9 @@
 import { renderCards } from './renderCards';
 import { startSwiper } from './startSwiper';
-import { title, page } from './swiper';
+import { title, page, apikey } from './swiper';
 
 export const createCard = async() => {
-  const response = await fetch(`http://www.omdbapi.com/?apikey=231f8e38&page=${page}&s=${title}`);
+  const response = await fetch(`http://www.omdbapi.com/?apikey=${apikey}&page=${page}&s=${title}`);
   const resArray = await response.json();
   const resultTemplate = await renderCards(resArray);
 

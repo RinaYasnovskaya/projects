@@ -11,8 +11,7 @@ import './swipeSlides';
 import { stateButton } from './stateButton';
 import './updateSwiper';
 
-// apikey imd = 231f8e38
-// global value
+export const apikey = '231f8e38';
 export let page = 1;
 export let title = 'dream';
 export const result = document.querySelector('.result');
