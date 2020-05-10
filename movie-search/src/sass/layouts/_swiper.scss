@@ -18,8 +18,8 @@
     margin-bottom: 15px;
     overflow-x: hidden;
     overflow-y: hidden;
-    background-color: #fff;
-    color: #000;
+    background-color: $color-slide-main;
+    color: $color-slide-text;
     text-align: center;
     font-size: 24px;
     padding: 15px;
@@ -41,8 +41,8 @@
   background-size: cover;
 }
 .year{
-  background-color: #fff;
-  color: #000;
+  background-color: $color-slide-main;
+  color: $color-slide-text;
   text-align: center;
   padding: 15px;
   padding-bottom: 5px;
@@ -66,7 +66,7 @@
   position: absolute;
   top: 45%;
   border-radius: 50%;
-  background-color: wheat;
+  background-color: $color-wait;
   width: 60px;
   height: 60px;
   z-index: 14;

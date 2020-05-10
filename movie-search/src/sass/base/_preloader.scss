@@ -7,7 +7,7 @@
   height: 100%;
   overflow: visible;
   background:  no-repeat center center;
-  background-color: #fff;
+  background-color: $color-preload;
 
   &--visible{
     visibility: visible;
