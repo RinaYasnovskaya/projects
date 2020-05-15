@@ -15,6 +15,8 @@ export const apikey = '231f8e38';
 export let page = 1;
 export let title = 'dream';
 export const result = document.querySelector('.result');
+const MOVIE_NOT_FOUND_ERROR = 'Movie not found!';
+const FIRST_SLIDE = 0;
 
 document.querySelector('.search__button').addEventListener('click', async (event) => {
   event.preventDefault();
@@ -42,9 +44,9 @@ document.querySelector('.search__button').addEventListener('click', async (event
       slider.removeAllSlides();
       slider.appendSlide(resTemp);
       hidePreload();
-      slider.slideTo(0);
+      slider.slideTo(FIRST_SLIDE);
     } else {
-      if (resArray.Error === 'Movie not found!') {
+      if (resArray.Error === MOVIE_NOT_FOUND_ERROR) {
         result.innerText = `No results were found for ${title}`;
       } else {
         result.innerText = resArray.Error;
