@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fancy Weather</title>
+</head>
+<body>
+  <header class="header">
+    <div class="header__left">
+      <button class="button button-change">
+        <div class="change">
+        </div>
+      </button>
+      <div class="language">
+        <button class="button drop-menu__start">
+          <span>
+            en
+          </span>
+          <span class="arrow"></span>
+        </button>
+        <div class="drop-menu">
+          <button class="drop-menu__item button" id="en">
+            en
+          </button>
+          <button class="drop-menu__item button inactive" id="ru">
+            ru
+          </button>
+          <button class="drop-menu__item button inactive" id="be">
+            be
+          </button>
+        </div>
+      </div>
+      <button class="button button__fareng inactive">
+        °F
+      </button>
+      <button class="button button__celc">
+        °C
+      </button>
+    </div>
+    <div class="header__right">
+      <input class="search" type="search" name="city" required="" placeholder="Search city or ZIP">
+      <button class="button search__button">
+        Search
+      </button>
+      <button class="search__voice"></button>
+    </div>
+  </header>
+  <main class="wrapper">
+    <div class="weather">
+      <p class="weather__location">Belarus</p>
+      <p class="weather__date">Sun 17 May &nbsp; 19:54</p>
+      <p class="weather__temperature">15</p>
+      <img class="weather__icon" alt="cloudy" src="img/cloudy.png">
+      <div class="weather__info">
+      <p>Overcast</p>
+      <p>Feels Like: 15°</p>
+      <p>Wind: 7 m/s</p>
+      <p>Humidity: 51%</p>
+    </div>
+    <div class="next-day">
+      <p class="next-day__day">Monday</p>
+      <p class="next-day__temperature">10°</p>
+      <img class="next-day__icon" alt="rain" src="img/rain.png">
+    </div>
+    <div class="next-day">
+      <p class="next-day__day">Tuesday</p>
+      <p class="next-day__temperature">8°</p>
+      <img class="next-day__icon" alt="rain" src="img/rain.png">
+    </div>
+    <div class="next-day">
+      <p class="next-day__day">Wednesday</p>
+      <p class="next-day__temperature">9°</p>
+      <img class="next-day__icon" alt="cloudy" src="img/partly-cloudy-day.png">
+    </div>
+  </div>
+  <div class="map">
+    <div class="map__section">
+      <iframe class="map__iframe" src=""></iframe>
+    </div>
+    <div class="map__coordinates">
+      <p>Latitude: 53°26'</p>
+      <p>Longitude: 27°42'</p>
+    </div>
+  </div>
+  </main>
+</body>
+</html>
