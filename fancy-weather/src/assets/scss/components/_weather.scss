@@ -1,0 +1,82 @@
+.weather{
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  text-transform: uppercase;
+  font-weight: $bold;
+
+  &__location, &__date, &__next {
+    width: 100%;
+  }
+
+  &__location{
+    font-size: 4.4rem;
+  }
+
+  &__date{
+    margin-top: 1rem;
+    font-size: 2.2rem;
+    text-transform: capitalize; 
+  }
+
+  &__temperature{
+    text-align: center;
+    font-size: 30rem;
+  }
+
+  &__next{
+    display: flex;
+  }
+}
+
+.weather-info{
+  display: flex;
+  flex-wrap: wrap;
+  width: 47%;
+
+  &__icon, &__info{
+    width: 100%;
+  }
+
+  &__icon{
+    height: $weather-icon-size;
+    img{
+      width: $weather-icon-size;
+    }
+  }
+
+  &__info{
+    padding-left: 15rem;
+  }
+
+  &__info p{
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.next-day{
+  display: flex;
+  flex-wrap: wrap;
+  width: 30%;
+
+  &:not(:last-child){
+    margin-right: 3rem;
+  }
+
+  &__day{
+    width: 100%;
+    font-size: 2.2rem;
+    font-weight: $bold;
+    text-transform: uppercase;
+  }
+
+  &__temperature{
+    font-size: 8rem;
+  }
+
+  &__icon{
+    width: $next-icon-size;
+    height: $next-icon-size;
+  }
+}

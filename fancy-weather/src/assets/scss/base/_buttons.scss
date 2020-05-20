@@ -1,0 +1,92 @@
+button{
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+.button{
+  width: $button-width;
+  height: $button-height;
+  background: $color-main;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  font-size: 1.4rem;
+  font-weight: $bold;
+  color: $color-text;
+  text-transform: uppercase;
+  transition: all .2s;
+
+  &__fareng{
+    margin-left: 1rem;
+    border-radius: 5px 0 0 5px;
+  }
+  &__celc{
+    border-radius: 0 5px 5px 0;
+  }
+}
+
+.button-change{
+  background: $color-main url('../../img/change.svg') no-repeat;
+  background-position: bottom;
+}
+.change{
+  background: url('../../img/repeat.svg') no-repeat;
+  width: $button-width;
+  height: $button-height;
+  background-size: 55%;
+  background-position: center;
+}
+
+.language{
+  position: relative;
+  margin-left: 1rem;
+}
+
+.drop-menu{
+  position: absolute;
+  z-index: 1;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .6s cubic-bezier(.25,.46,.45,.94), border-radius .2s;
+
+  &__start, &__item{
+    width: 7rem;
+  }
+
+  &__item{
+    border-radius: 0;
+  }
+}
+.arrow{
+  width: $arrow-size;
+  height: $arrow-size;
+  margin-left: 1rem;
+  background: url('../../img/arrow.svg') no-repeat;
+  background-position: center;
+}
+
+.unavailable{
+  background: $color-button-unavailable;
+  color: $color-unavailable-text;
+}
+
+.search{
+  &__button{
+    width: $button-search-width;
+    margin-left: 0;
+    border-radius: 0 5px 5px 0;
+  }
+  &__voice{
+    width: $voice-width;
+    height: $voice-height;
+    position: absolute;
+    z-index: 1;
+    top: 2px;
+    right: 100px;
+    background: url('../../img/microphone.svg') no-repeat;
+    background-position: center;
+    background-size: 50%;
+  }
+}

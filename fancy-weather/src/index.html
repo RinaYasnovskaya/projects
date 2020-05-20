@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fancy Weather</title>
+  <link rel="shortcut icon" href="./assets/img/weather.ico" type="image/x-icon">
 </head>
 <body>
   <header class="header">
@@ -23,15 +24,15 @@
           <button class="drop-menu__item button" id="en">
             en
           </button>
-          <button class="drop-menu__item button inactive" id="ru">
+          <button class="drop-menu__item button unavailable" id="ru">
             ru
           </button>
-          <button class="drop-menu__item button inactive" id="be">
+          <button class="drop-menu__item button unavailable" id="be">
             be
           </button>
         </div>
       </div>
-      <button class="button button__fareng inactive">
+      <button class="button button__fareng unavailable">
         °F
       </button>
       <button class="button button__celc">
@@ -39,7 +40,7 @@
       </button>
     </div>
     <div class="header__right">
-      <input class="search" type="search" name="city" required="" placeholder="Search city or ZIP">
+      <input class="search" type="search" name="city" required placeholder="Search city or ZIP">
       <button class="button search__button">
         Search
       </button>
@@ -48,37 +49,50 @@
   </header>
   <main class="wrapper">
     <div class="weather">
-      <p class="weather__location">Belarus</p>
-      <p class="weather__date">Sun 17 May &nbsp; 19:54</p>
-      <p class="weather__temperature">15</p>
-      <img class="weather__icon" alt="cloudy" src="img/cloudy.png">
-      <div class="weather__info">
-      <p>Overcast</p>
-      <p>Feels Like: 15°</p>
-      <p>Wind: 7 m/s</p>
-      <p>Humidity: 51%</p>
-    </div>
-    <div class="next-day">
-      <p class="next-day__day">Monday</p>
-      <p class="next-day__temperature">10°</p>
-      <img class="next-day__icon" alt="rain" src="img/rain.png">
-    </div>
-    <div class="next-day">
-      <p class="next-day__day">Tuesday</p>
-      <p class="next-day__temperature">8°</p>
-      <img class="next-day__icon" alt="rain" src="img/rain.png">
-    </div>
-    <div class="next-day">
-      <p class="next-day__day">Wednesday</p>
-      <p class="next-day__temperature">9°</p>
-      <img class="next-day__icon" alt="cloudy" src="img/partly-cloudy-day.png">
+      <div class="weather__location">
+        <span>Kamyshin, Russia</span>
+      </div>
+      <div class="weather__date">
+        <span>Sun 17 May &nbsp; 19:54</span>
+      </div>
+      <div class="weather__temperature">
+        <span>15</span>
+      </div>
+      <div class="weather-info">
+        <div class="weather-info__icon">
+          <img alt="" src="">
+        </div>
+        <div class="weather-info__info">
+          <p>Overcast</p>
+          <p>Feels Like: 15°</p>
+          <p>Wind: 7 m/s</p>
+          <p>Humidity: 51%</p>
+        </div>
+      </div>
+      <div class="weather__next">
+        <div class="next-day">
+          <p class="next-day__day">Monday</p>
+          <p class="next-day__temperature">10°</p>
+          <img class="next-day__icon" alt="" src="">
+        </div>
+        <div class="next-day">
+          <p class="next-day__day">Tuesday</p>
+          <p class="next-day__temperature">8°</p>
+          <img class="next-day__icon" alt="" src="">
+        </div>
+        <div class="next-day">
+          <p class="next-day__day">Wednesday</p>
+          <p class="next-day__temperature">9°</p>
+          <img class="next-day__icon" alt="" src="">
+        </div>
+      </div>
     </div>
   </div>
   <div class="map">
     <div class="map__section">
       <iframe class="map__iframe" src=""></iframe>
     </div>
-    <div class="map__coordinates">
+    <div class="map__info">
       <p>Latitude: 53°26'</p>
       <p>Longitude: 27°42'</p>
     </div>
