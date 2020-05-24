@@ -31,12 +31,18 @@ button{
   background: $color-main url('../../img/change.svg') no-repeat;
   background-position: bottom;
 }
+
+.rotate{
+  transform: rotate(360deg);
+}
+
 .change{
   background: url('../../img/repeat.svg') no-repeat;
   width: $button-width;
   height: $button-height;
   background-size: 55%;
   background-position: center;
+  transition: transform 0.5s ease;
 }
 
 .language{

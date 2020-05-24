@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fancy Weather</title>
   <link rel="shortcut icon" href="./assets/img/weather.ico" type="image/x-icon">
+  <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
+
 </head>
 <body>
   <header class="header">
@@ -89,12 +91,11 @@
     </div>
   </div>
   <div class="map">
-    <div class="map__section">
-      <iframe class="map__iframe" src=""></iframe>
+    <div id="map" class="map__section">
+      
     </div>
     <div class="map__info">
-      <p>Latitude: 53°26'</p>
-      <p>Longitude: 27°42'</p>
+      
     </div>
   </div>
   </main>
