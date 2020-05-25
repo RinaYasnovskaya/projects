@@ -1,11 +1,11 @@
-import { changeInfoCords } from './changeInfoCords';
+import { changeInfo } from './changeInfo';
 import { createMap } from './createMap';
 
 export const getCurrCords = () => {
   const success = (pos) => {
     const crd = pos.coords;
     createMap(crd);
-    changeInfoCords(crd);
+    changeInfo(crd);    
   };
 
   const error = (err) => {
