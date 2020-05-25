@@ -14,6 +14,6 @@ export const createFetch = async () => {
     console.log('error, sorry');
   }
   const imgRes = await imgFetch.json();
-  console.log(imgRes);
+  
   return imgRes;
 };

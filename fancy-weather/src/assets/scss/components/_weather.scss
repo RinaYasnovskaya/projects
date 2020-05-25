@@ -27,6 +27,10 @@
   &__next{
     display: flex;
   }
+
+  &__today-info{
+    display: flex;
+  }
 }
 
 .weather-info{
@@ -46,7 +50,7 @@
   }
 
   &__info{
-    padding-left: 15rem;
+    padding-left: 10rem;
   }
 
   &__info p{
