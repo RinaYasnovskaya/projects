@@ -1,19 +1,17 @@
 import { numberError } from './main';
-import { createUrlImg } from "./createUrlImg";
 
-export const createFetch = async () => {
-  const fetchURL = createUrlImg();
-  let imgFetch = null;
+export const createFetch = async (fetchURL) => {
+  let resFetch = null;
   try {
-    imgFetch = await fetch(fetchURL);
-    if (imgFetch.Response && imgFetch.Response.status === numberError) {
+    resFetch = await fetch(fetchURL);
+    if (resFetch.Response && resFetch.Response.status === numberError) {
       throw new Error;
     }
   }
   catch (err) {
     console.log('error, sorry');
   }
-  const imgRes = await imgFetch.json();
+  const resultResp = await resFetch.json();
   
-  return imgRes;
+  return resultResp;
 };

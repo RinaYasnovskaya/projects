@@ -1,4 +1,4 @@
-import { getCountry } from './main';
+import { getCountry } from "./getCountry";
 
 export const changeInfo = async (cord) => {
   const resCountry = await getCountry(cord);

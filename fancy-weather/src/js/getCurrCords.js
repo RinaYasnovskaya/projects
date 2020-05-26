@@ -1,12 +1,12 @@
 import { changeInfo } from './changeInfo';
 import { createMap } from './createMap';
-import { changeWeatherInfo } from './main';
+import { changeWeatherInfo } from "./changeWeatherInfo";
 
 export const getCurrCords = () => {
   const success = (pos) => {
     const crd = pos.coords;
     // createMap(crd);
-    // changeInfo(crd); 
+    changeInfo(crd); 
     changeWeatherInfo(crd);
   };
 
