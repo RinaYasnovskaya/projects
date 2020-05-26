@@ -6,8 +6,8 @@ export const getCurrCords = () => {
   const success = (pos) => {
     const crd = pos.coords;
     // createMap(crd);
-    changeInfo(crd); 
-    changeWeatherInfo(crd);
+    // changeInfo(crd); 
+    // changeWeatherInfo(crd);
   };
 
   const error = (err) => {
