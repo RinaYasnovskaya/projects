@@ -63,6 +63,10 @@ button{
   &__item{
     border-radius: 0;
   }
+  &__item:hover{
+    background-color: $color-main;
+    color: $color-text;
+  }
 }
 .hidden{
   overflow: hidden;

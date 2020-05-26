@@ -4,7 +4,7 @@ export const createFetch = async (fetchURL) => {
   let resFetch = null;
   try {
     resFetch = await fetch(fetchURL);
-    if (resFetch.Response && resFetch.Response.status === numberError) {
+    if (resFetch.Response && numberError.includes(resFetch.Response.status)) {
       throw new Error;
     }
   }

@@ -2,7 +2,6 @@ import { getCountry } from "./getCountry";
 
 export const changeInfo = async (cord) => {
   const resCountry = await getCountry(cord);
-
   const blockInfoCords = document.querySelector('.map__info');
   const infoCountry = document.querySelector('.weather__location');
   const blockTimeStamp = document.querySelector('.weather__date');
