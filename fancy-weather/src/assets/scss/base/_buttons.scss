@@ -86,6 +86,9 @@ button{
 }
 
 .search{
+  outline: none;
+  border: 1px solid white !important;
+  
   &__button{
     width: $button-search-width;
     margin-left: 0;
@@ -101,5 +104,8 @@ button{
     background: url('/assets/img/microphone.svg') no-repeat;
     background-position: center;
     background-size: 50%;
+  }
+  &::placeholder{
+    color: $color-unavailable-text;
   }
 }
