@@ -1,6 +1,7 @@
 import { createImgWeatherIcon } from "./createImgWeatherIcon";
 import { getWeather } from "./getWeather";
 import { mainProperties } from "./main";
+import { changeBackground } from './changeBackground';
 
 const days = {
   0: 'Sunday',
@@ -20,7 +21,7 @@ export const changeWeatherInfo = async () => {
   today.innerHTML = '';
   next.innerHTML = '';
   const iconMainURL = createImgWeatherIcon(arrWeather.data[0].weather.icon);
-
+  mainProperties.setQueryWeather(arrWeather.data[0].weather.description);
   const tempToday = `<div class="weather__temperature">
     <span>${Math.floor(arrWeather.data[0].temp)}</span>
   </div>
@@ -47,4 +48,5 @@ export const changeWeatherInfo = async () => {
   }
   today.innerHTML = tempToday;
   next.innerHTML = tempNextDays;
+  changeBackground();
 };

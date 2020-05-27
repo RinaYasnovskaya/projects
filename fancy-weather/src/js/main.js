@@ -6,6 +6,8 @@ import { changeUnit } from './changeUnit';
 import { changeInfo } from './changeInfo';
 import { createMap } from './createMap';
 import { changeWeatherInfo } from './changeWeatherInfo';
+import { createFetch } from './createFetch';
+import { createURLCountryOrCoords } from './createURLCountryOrCoords';
 
 export const accessKeyImg = 'OAUOq7MLCCJIn1ifqbPUopNrq5Ebmzl6e2XB0R4kjwU';
 // const accessKeyImg = 'OAUOq7MLCCJIn1ifqbPUopNrq5Ebmzl6e0R4kjwU'; // wrong key for checking
@@ -50,15 +52,12 @@ export const mainProperties = {
   }
 }
 
-let clickCount = 0;
 document.querySelector('.arrow').addEventListener('click', () => {
-  clickCount += 1;
   const dropMenu = document.querySelector('.drop-menu');
-  if (clickCount === 1) {
+  if (dropMenu.classList.contains('hidden')) {
     dropMenu.classList.remove('hidden');
   }
   else {
-    clickCount = 0;
     dropMenu.classList.add('hidden');
   }
 });
@@ -93,21 +92,40 @@ document.querySelectorAll('.drop-menu__item').forEach((item) => {
   });
 })
 
-const findCountry = () => {
+const findCountry = async () => {
   const str = document.querySelector('.search').value.trim();
   const res = /\d\s/.test(str);
-  console.log(str);
-  if (res) {
-    const resArr = str.split(' ').map(item => +item);
-    mainProperties.setCoords(resArr[0], resArr[1]);
+
+  if (str) {
+    if (res) {
+      const resArr = str.split(' ').map(item => +item);
+      mainProperties.setCoords(resArr[0], resArr[1]);
+      
+    } else {
+      const url = createURLCountryOrCoords(str);
+      const result = await createFetch(url);
+      const lat = result.results[0].geometry.lat;
+      const lng = result.results[0].geometry.lng;
+      mainProperties.setCoords(lat, lng);
+    }
+    document.querySelector('#map').innerHTML = '';
     createMap();
     changeInfo(); 
     changeWeatherInfo();
-  } 
+    document.querySelector('.search').value = '';
+
+  } else {
+    console.log('sorry');
+  }
 }
 
 document.querySelector('.search__button').addEventListener('click', () => {
   findCountry();
+});
+document.querySelector('.search').addEventListener('keyup', (event) => {
+  if (event.keyCode === 13) {
+    findCountry();
+  }
 });
 
 window.onload = () => {
