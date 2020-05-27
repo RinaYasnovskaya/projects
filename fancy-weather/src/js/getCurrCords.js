@@ -1,13 +1,14 @@
 import { changeInfo } from './changeInfo';
 import { createMap } from './createMap';
 import { changeWeatherInfo } from "./changeWeatherInfo";
-
+import { mainProperties } from './main';
+ 
 export const getCurrCords = () => {
   const success = (pos) => {
-    const crd = pos.coords;
-    createMap(crd);
-    changeInfo(crd); 
-    changeWeatherInfo(crd);
+    mainProperties.setCoords(pos.coords.latitude, pos.coords.longitude);
+    createMap();
+    changeInfo(); 
+    changeWeatherInfo();
   };
 
   const error = (err) => {

@@ -7,8 +7,8 @@ export const createURLCountryOrCoords = (value) => {
     return `https://api.opencagedata.com/geocode/v1/json?q=${value}&key=${geocoding}&language=${lang}`;
   }
   else {
-    const lat = value.latitude;
-    const lng = value.longitude;
+    const lat = value[0];
+    const lng = value[1];
     return `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lng}
     &key=${geocoding}&language=${lang}`;
   }

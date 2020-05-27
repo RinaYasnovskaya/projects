@@ -1,5 +1,6 @@
 import { createImgWeatherIcon } from "./createImgWeatherIcon";
 import { getWeather } from "./getWeather";
+import { mainProperties } from "./main";
 
 const days = {
   0: 'Sunday',
@@ -11,7 +12,8 @@ const days = {
   6: 'Saturday'
 }
 
-export const changeWeatherInfo = async (coords) => {
+export const changeWeatherInfo = async () => {
+  const coords = mainProperties.getCoords();
   const arrWeather = await getWeather(coords);
   const today = document.querySelector('.weather__today-info');
   const next = document.querySelector('.weather__next');
