@@ -4,7 +4,7 @@ import { mainProperties } from "./main";
 export const changeInfo = async () => {
   const coords = mainProperties.getCoords();
   const resCountry = await getCountry(coords);
-
+  console.log(resCountry);
   const blockInfoCords = document.querySelector('.map__info');
   const infoCountry = document.querySelector('.weather__location');
   const blockTimeStamp = document.querySelector('.weather__date');

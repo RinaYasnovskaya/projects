@@ -13,3 +13,7 @@
     text-align: right;
   }
 }
+
+.mapboxgl-ctrl, .mapboxgl-ctrl-attrib.mapboxgl-compact:after{
+  display: none !important;
+}
