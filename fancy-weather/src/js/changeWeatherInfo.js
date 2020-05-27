@@ -1,4 +1,4 @@
-import { createImgWeatherIcon } from "./clearDay";
+import { createImgWeatherIcon } from "./createImgWeatherIcon";
 import { getWeather } from "./getWeather";
 
 const days = {

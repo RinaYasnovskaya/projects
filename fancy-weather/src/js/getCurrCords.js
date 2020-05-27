@@ -5,9 +5,9 @@ import { changeWeatherInfo } from "./changeWeatherInfo";
 export const getCurrCords = () => {
   const success = (pos) => {
     const crd = pos.coords;
-    // createMap(crd);
+    createMap(crd);
     changeInfo(crd); 
-    // changeWeatherInfo(crd);
+    changeWeatherInfo(crd);
   };
 
   const error = (err) => {

@@ -1,6 +1,8 @@
-import { geocoding, lang } from './main';
+import { geocoding, mainProperties } from './main';
 
 export const createURLCountryOrCoords = (value) => {
+  const lang = mainProperties.getLang();
+  
   if (typeof value === 'string') {
     return `https://api.opencagedata.com/geocode/v1/json?q=${value}&key=${geocoding}&language=${lang}`;
   }

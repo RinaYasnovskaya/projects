@@ -1,5 +1,7 @@
 import { changeBackground } from './changeBackground';
 import { getCurrCords } from './getCurrCords';
+import { saveUnit } from './saveUnit';
+import { saveLang } from './saveLang';
 
 export const accessKeyImg = 'OAUOq7MLCCJIn1ifqbPUopNrq5Ebmzl6e2XB0R4kjwU';
 // const accessKeyImg = 'OAUOq7MLCCJIn1ifqbPUopNrq5Ebmzl6e0R4kjwU'; // wrong key for checking
@@ -7,11 +9,36 @@ export const accessKeyImg = 'OAUOq7MLCCJIn1ifqbPUopNrq5Ebmzl6e2XB0R4kjwU';
 export const geocoding = '54572f3240854bfdbe2c9dd0d9cbd15f';
 export const weatherApiKey = 'd638f1c5cf184e38a9654b6b6bad7ccf';
 
-export const numberError = ['401', '403', '404', '405', '406', '409', '411', '412', '413', '415', 
-'416', '422', '423', '429', '500', '503', '504', '507', '509'];
-export const mainQuery = 'weather';
-export let lang = 'en';
-export let unit = 'C';
+// export const mainQuery = 'weather';
+// export let lang = 'en';
+// export let unit = 'C';
+
+export const mainProperties = {
+  langs: 'en',
+  unit: 'C',
+  mainQuery: 'weather',
+
+  setLang(langValue) {
+    this.langs = langValue;
+  },
+  getLang() {
+    return this.langs;
+  },
+
+  setUnit(unitValue) {
+    this.unit = unitValue;
+  },
+  getUnit() {
+    return this.unit;
+  },
+
+  setQueryWeather(weatherValue) {
+    this.mainQuery = weatherValue;
+  },
+  getQueryWeather() {
+    return this.mainQuery;
+  }
+}
 
 let clickCount = 0;
 document.querySelector('.arrow').addEventListener('click', () => {
@@ -19,7 +46,8 @@ document.querySelector('.arrow').addEventListener('click', () => {
   const dropMenu = document.querySelector('.drop-menu');
   if (clickCount === 1) {
     dropMenu.classList.remove('hidden');
-  } else {
+  }
+  else {
     clickCount = 0;
     dropMenu.classList.add('hidden');
   }
@@ -35,18 +63,14 @@ document.querySelector('.button-change').addEventListener('click', (event) => {
   }, 1000);
 });
 
-const saveLang = () => {
-  localStorage.setItem('lang', lang);
-}
-const saveUnit = () => {
-  localStorage.setItem('unit', unit);
-}
-
 const restoreLang = () => {
   console.log(localStorage);
   if (localStorage.getItem('lang')) {
-    lang = localStorage.getItem('lang');
-    document.querySelector('.drop-menu__start-item').innerText = lang; 
+    mainProperties.setLang(localStorage.getItem('lang'));
+    const lang = mainProperties.getLang();
+
+    document.querySelector('.drop-menu__start-item').innerText = lang;
+    
     document.querySelectorAll('.drop-menu__item').forEach((item) => {
       item.classList.remove('unavailable');
       if (item.id !== lang) {
@@ -55,7 +79,9 @@ const restoreLang = () => {
     });
   }
   if (localStorage.getItem('unit')) {
-    unit = localStorage.getItem('unit');
+    mainProperties.setUnit(localStorage.getItem('unit'));
+    const unit = mainProperties.getUnit();
+
     const fareng = document.querySelector('.button__fareng');
     const celc = document.querySelector('.button__celc');
     fareng.classList.remove('unavailable');
@@ -81,7 +107,7 @@ document.querySelector('.drop-menu').addEventListener('click', (event) => {
     }
   });
 
-  lang = event.target.id;
+  mainProperties.setLang(event.target.id);
   saveLang();
 })
 
@@ -93,7 +119,7 @@ const changeUnit = () => {
     if (fareng.classList.contains('unavailable')) {
       fareng.classList.remove('unavailable');
       celc.classList.add('unavailable');
-      unit = (fareng.innerText).slice(1);
+      mainProperties.setUnit((fareng.innerText).slice(1));
     }
     saveUnit();
   });
@@ -102,13 +128,12 @@ const changeUnit = () => {
     if (celc.classList.contains('unavailable')) {
       celc.classList.remove('unavailable');
       fareng.classList.add('unavailable');
-      unit = (celc.innerText).slice(1);
+      mainProperties.setUnit((celc.innerText).slice(1));
     }
     saveUnit();
   });
   
 }
-
 
 window.onload = () => {
   changeUnit();
