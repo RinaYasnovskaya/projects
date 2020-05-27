@@ -3,5 +3,5 @@ body{
   height: 100vh;
   color: $color-text;
   background-size: 100%;
-  background: linear-gradient($color-gradient-one 0%, $color-gradient-two 100%) center center / cover fixed, url('../../img/default.jpg') center center no-repeat fixed;
+  background: linear-gradient($color-gradient-one 0%, $color-gradient-two 100%) center center / cover fixed, url('/assets/img/default.jpg') center center no-repeat fixed;
 }

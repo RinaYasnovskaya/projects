@@ -28,7 +28,7 @@ button{
 }
 
 .button-change{
-  background: $color-main url('../../img/change.svg') no-repeat;
+  background: $color-main url('/assets/img/change.svg') no-repeat;
   background-position: bottom;
 }
 
@@ -37,7 +37,7 @@ button{
 }
 
 .change{
-  background: url('../../img/repeat.svg') no-repeat;
+  background: url('/assets/img/repeat.svg') no-repeat;
   width: $button-width;
   height: $button-height;
   background-size: 55%;
@@ -76,7 +76,7 @@ button{
   width: $arrow-size;
   height: $arrow-size;
   margin-left: 1rem;
-  background: url('../../img/arrow.svg') no-repeat;
+  background: url('/assets/img/arrow.svg') no-repeat;
   background-position: center;
 }
 
@@ -98,7 +98,7 @@ button{
     z-index: 1;
     top: 2px;
     right: 100px;
-    background: url('../../img/microphone.svg') no-repeat;
+    background: url('/assets/img/microphone.svg') no-repeat;
     background-position: center;
     background-size: 50%;
   }

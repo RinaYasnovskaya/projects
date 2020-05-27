@@ -4,13 +4,10 @@ import { mainProperties } from "./main";
 export const changeInfo = async () => {
   const coords = mainProperties.getCoords();
   const resCountry = await getCountry(coords);
+
   const blockInfoCords = document.querySelector('.map__info');
   const infoCountry = document.querySelector('.weather__location');
   const blockTimeStamp = document.querySelector('.weather__date');
-
-  blockInfoCords.innerHTML = '';
-  infoCountry.innerHTML = '';
-  blockTimeStamp.innerHTML = '';
 
   const lat = resCountry.results[0].annotations.DMS.lat;
   const lng = resCountry.results[0].annotations.DMS.lng;

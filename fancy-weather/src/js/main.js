@@ -3,6 +3,9 @@ import { getCurrCords } from './getCurrCords';
 import { saveLang } from './saveLang';
 import { restoreLang } from './restoreLang';
 import { changeUnit } from './changeUnit';
+import { changeInfo } from './changeInfo';
+import { createMap } from './createMap';
+import { changeWeatherInfo } from './changeWeatherInfo';
 
 export const accessKeyImg = 'OAUOq7MLCCJIn1ifqbPUopNrq5Ebmzl6e2XB0R4kjwU';
 // const accessKeyImg = 'OAUOq7MLCCJIn1ifqbPUopNrq5Ebmzl6e0R4kjwU'; // wrong key for checking
@@ -84,6 +87,28 @@ document.querySelector('.drop-menu').addEventListener('click', (event) => {
   mainProperties.setLang(event.target.id);
   saveLang();
 })
+
+document.querySelectorAll('.drop-menu__item').forEach((item) => {
+  item.addEventListener('click', () => {
+  });
+})
+
+const findCountry = () => {
+  const str = document.querySelector('.search').value.trim();
+  const res = /\d\s/.test(str);
+  console.log(str);
+  if (res) {
+    const resArr = str.split(' ').map(item => +item);
+    mainProperties.setCoords(resArr[0], resArr[1]);
+    createMap();
+    changeInfo(); 
+    changeWeatherInfo();
+  } 
+}
+
+document.querySelector('.search__button').addEventListener('click', () => {
+  findCountry();
+});
 
 window.onload = () => {
   changeUnit();

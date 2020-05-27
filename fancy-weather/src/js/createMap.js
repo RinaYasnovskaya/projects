@@ -1,6 +1,6 @@
 import { mainProperties } from './main';
 
-export const createMap = (coords) => {
+export const createMap = () => {
   const latitude = (mainProperties.getCoords())[0];
   const longitude = (mainProperties.getCoords())[1];
 
