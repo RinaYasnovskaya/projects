@@ -16,6 +16,7 @@ const days = {
 export const changeWeatherInfo = async () => {
   const coords = mainProperties.getCoords();
   const arrWeather = await getWeather(coords);
+  console.log(arrWeather);
   const today = document.querySelector('.weather__today-info');
   const next = document.querySelector('.weather__next');
   today.innerHTML = '';

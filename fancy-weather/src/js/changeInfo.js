@@ -12,7 +12,7 @@ export const changeInfo = async () => {
   const lat = resCountry.results[0].annotations.DMS.lat;
   const lng = resCountry.results[0].annotations.DMS.lng;
 
-  const city = resCountry.results[0].components.city;
+  const city = resCountry.results[0].components.city || resCountry.results[0].components.town;
   const country = resCountry.results[0].components.country;
   const timeStamp = resCountry.timestamp.created_http;
 

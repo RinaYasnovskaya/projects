@@ -94,28 +94,39 @@ document.querySelectorAll('.drop-menu__item').forEach((item) => {
 
 const findCountry = async () => {
   const str = document.querySelector('.search').value.trim();
-  const res = /\d\s/.test(str);
-
+  const strRes = str.replace(/,/g, ' ').replace(/\s+/g, ' ');
+  const res = /\d\s/.test(strRes);
+  const startValidCoords = -90;
+  const endValidCoords = 90;
   if (str) {
     if (res) {
-      const resArr = str.split(' ').map(item => +item);
+      const resArr = str.split(' ').map(item => +((item.replace(/[a-zа-я]/ig, '').replace(/[*+?%&^${}()|[\]\\]/g, ''))));
+
       mainProperties.setCoords(resArr[0], resArr[1]);
-      
+      if (resArr[0] <= startValidCoords || resArr[0] >= endValidCoords 
+        || resArr[1] <= startValidCoords || resArr[1] >= endValidCoords) {
+        alert('Wrong coordinates! ');
+        document.querySelector('.search').value = '';
+      }
+      else{
+        createMap();
+        changeInfo(); 
+        changeWeatherInfo();
+        document.querySelector('.search').value = '';
+      }
     } else {
       const url = createURLCountryOrCoords(str);
       const result = await createFetch(url);
       const lat = result.results[0].geometry.lat;
       const lng = result.results[0].geometry.lng;
       mainProperties.setCoords(lat, lng);
+      createMap();
+      changeInfo(); 
+      changeWeatherInfo();
+      document.querySelector('.search').value = '';
     }
-    document.querySelector('#map').innerHTML = '';
-    createMap();
-    changeInfo(); 
-    changeWeatherInfo();
-    document.querySelector('.search').value = '';
-
   } else {
-    console.log('sorry');
+    alert('Please enter name of city or coordinates');
   }
 }
 

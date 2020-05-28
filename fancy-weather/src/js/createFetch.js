@@ -1,4 +1,4 @@
-const numberError = ['401', '403', '404', '405', '406', '409', '411', '412', '413', '415', 
+const numberError = ['400', '401', '403', '404', '405', '406', '409', '411', '412', '413', '415', 
 '416', '422', '423', '429', '500', '503', '504', '507', '509'];
 
 export const createFetch = async (fetchURL) => {
@@ -10,7 +10,7 @@ export const createFetch = async (fetchURL) => {
     }
   }
   catch (err) {
-    console.log('error, sorry');
+    alert('Application error. Try later');
   }
   const resultResp = await resFetch.json();
   
