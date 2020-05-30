@@ -7,7 +7,7 @@ import { findCountry } from './findCountry';
 import { translateInfo } from './translateInfo';
 
 export const accessKeyImg = 'OAUOq7MLCCJIn1ifqbPUopNrq5Ebmzl6e2XB0R4kjwU';
-// const accessKeyImg = 'OAUOq7MLCCJIn1ifqbPUopNrq5Ebmzl6e0R4kjwU'; // wrong key for checking
+// export const accessKeyImg = 'OAUOq7MLCCJIn1ifqbPUopNrq5Ebmzl6e0R4kjwU'; // wrong key for checking
 
 export const geocoding = '54572f3240854bfdbe2c9dd0d9cbd15f';
 export const weatherApiKey = 'd638f1c5cf184e38a9654b6b6bad7ccf';
@@ -103,6 +103,6 @@ document.querySelector('.search').addEventListener('keyup', (event) => {
 
 window.onload = () => {
   changeUnit();
-  getCurrCords();
   restoreLang();
+  getCurrCords();
 }

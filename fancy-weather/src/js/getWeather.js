@@ -2,6 +2,7 @@ import { createFetch } from './createFetch';
 import { weatherApiKey, mainProperties} from './main';
 
 export const getWeather = async (coords) => {
+  console.log(coords);
   const lat = coords[0];
   const lng = coords[1];
   const lang = mainProperties.getLang();
@@ -10,5 +11,6 @@ export const getWeather = async (coords) => {
   &units=${unit}&days=4&&lat=${lat}&lon=${lng}`;
   
   const resWeather = await createFetch(fetchWeather);
+  console.log('fetch weather', resWeather);
   return resWeather;
 };

@@ -19,9 +19,9 @@ export const translateInfo = async (lang) => {
   const posReady = nameOfPositionCoords[lang];
   const inputReady = inputOtherLang[lang];
 
-  const countryReady = await translateWords(countryToTranslate.textContent, lang, true);
-  const dateReady = await translateWords(dateToTranslate.textContent, lang, true);
-  const descriptionReady = await translateWords(descriptionToTranslate.textContent, lang, true);
+  const countryReady = await translateWords(countryToTranslate.textContent, lang);
+  const dateReady = await translateWords(dateToTranslate.textContent, lang);
+  const descriptionReady = await translateWords(descriptionToTranslate.textContent, lang);
 
   weatherInfoToTranslate.forEach((elem, index) => {
     elem.textContent = infoReady[index];
