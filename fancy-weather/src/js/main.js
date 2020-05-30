@@ -3,11 +3,8 @@ import { getCurrCords } from './getCurrCords';
 import { saveLang } from './saveLang';
 import { restoreLang } from './restoreLang';
 import { changeUnit } from './changeUnit';
-import { changeInfo } from './changeInfo';
-import { createMap } from './createMap';
-import { changeWeatherInfo } from './changeWeatherInfo';
-import { createFetch } from './createFetch';
-import { createURLCountryOrCoords } from './createURLCountryOrCoords';
+import { findCountry } from './findCountry';
+import { translateInfo } from './translateInfo';
 
 export const accessKeyImg = 'OAUOq7MLCCJIn1ifqbPUopNrq5Ebmzl6e2XB0R4kjwU';
 // const accessKeyImg = 'OAUOq7MLCCJIn1ifqbPUopNrq5Ebmzl6e0R4kjwU'; // wrong key for checking
@@ -66,10 +63,10 @@ document.querySelector('.button-change').addEventListener('click', (event) => {
   document.querySelector('body').style = '';
   const buttonChange = document.querySelector('.change');
   buttonChange.classList.add('rotate');
-  changeBackground();
-  setTimeout(() => {
-    buttonChange.classList.remove('rotate');
-  }, 1000);
+  changeBackground()
+    .then(() => {
+      buttonChange.classList.remove('rotate');
+    })
 });
 
 document.querySelector('.drop-menu').addEventListener('click', (event) => {
@@ -82,53 +79,18 @@ document.querySelector('.drop-menu').addEventListener('click', (event) => {
       item.classList.add('unavailable');
       document.querySelector('.drop-menu').classList.add('hidden');
     }
+    mainProperties.setLang(event.target.id);
+    saveLang();
   });
-  mainProperties.setLang(event.target.id);
-  saveLang();
+  
 })
 
 document.querySelectorAll('.drop-menu__item').forEach((item) => {
   item.addEventListener('click', () => {
+    const lang = item.textContent.trim();
+    translateInfo(lang);
   });
 })
-
-const findCountry = async () => {
-  const str = document.querySelector('.search').value.trim();
-  const strRes = str.replace(/,/g, ' ').replace(/\s+/g, ' ');
-  const res = /\d\s/.test(strRes);
-  const startValidCoords = -90;
-  const endValidCoords = 90;
-  if (str) {
-    if (res) {
-      const resArr = str.split(' ').map(item => +((item.replace(/[a-zа-я]/ig, '').replace(/[*+?%&^${}()|[\]\\]/g, ''))));
-
-      mainProperties.setCoords(resArr[0], resArr[1]);
-      if (resArr[0] <= startValidCoords || resArr[0] >= endValidCoords 
-        || resArr[1] <= startValidCoords || resArr[1] >= endValidCoords) {
-        alert('Wrong coordinates! ');
-        document.querySelector('.search').value = '';
-      }
-      else{
-        createMap();
-        changeInfo(); 
-        changeWeatherInfo();
-        document.querySelector('.search').value = '';
-      }
-    } else {
-      const url = createURLCountryOrCoords(str);
-      const result = await createFetch(url);
-      const lat = result.results[0].geometry.lat;
-      const lng = result.results[0].geometry.lng;
-      mainProperties.setCoords(lat, lng);
-      createMap();
-      changeInfo(); 
-      changeWeatherInfo();
-      document.querySelector('.search').value = '';
-    }
-  } else {
-    alert('Please enter name of city or coordinates');
-  }
-}
 
 document.querySelector('.search__button').addEventListener('click', () => {
   findCountry();
@@ -143,5 +105,4 @@ window.onload = () => {
   changeUnit();
   getCurrCords();
   restoreLang();
-  // changeBackground();
 }

@@ -3,8 +3,10 @@ const numberError = ['400', '401', '403', '404', '405', '406', '409', '411', '41
 
 export const createFetch = async (fetchURL) => {
   let resFetch = null;
+  let resultResp = null;
   try {
     resFetch = await fetch(fetchURL);
+    resultResp = await resFetch.json();
     if (resFetch.Response && numberError.includes(resFetch.Response.status)) {
       throw new Error;
     }
@@ -12,7 +14,6 @@ export const createFetch = async (fetchURL) => {
   catch (err) {
     alert('Application error. Try later');
   }
-  const resultResp = await resFetch.json();
   
   return resultResp;
 };

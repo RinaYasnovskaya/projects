@@ -10,6 +10,5 @@ export const getWeather = async (coords) => {
   &units=${unit}&days=4&&lat=${lat}&lon=${lng}`;
   
   const resWeather = await createFetch(fetchWeather);
-  console.log(resWeather);
   return resWeather;
 };

@@ -1,10 +1,12 @@
 import { getCountry } from "./getCountry";
 import { mainProperties } from "./main";
+import { translateWords } from "./translateWords";
+import { nameOfPositionCoords, inputOtherLang } from "./constantsForTranslation";
 
 export const changeInfo = async () => {
   const coords = mainProperties.getCoords();
   const resCountry = await getCountry(coords);
-  console.log(resCountry);
+  const curLang = mainProperties.getLang();
   const blockInfoCords = document.querySelector('.map__info');
   const infoCountry = document.querySelector('.weather__location');
   const blockTimeStamp = document.querySelector('.weather__date');
@@ -16,11 +18,17 @@ export const changeInfo = async () => {
   const country = resCountry.results[0].components.country;
   const timeStamp = resCountry.timestamp.created_http;
 
-  const temp = `<p>Latitude: ${lat}</p>
-  <p>Longitude: ${lng}</p>`;
-  const tempCountry = `<span>${city}, ${country}</span>`;
-  const tempTime = `<span>${timeStamp}</span>`;
-  
+  const posOnLang = nameOfPositionCoords[curLang];
+  const inputPlaceholder = inputOtherLang[curLang];
+
+  const timeNow = await translateWords(timeStamp, curLang, true);
+
+  const temp = `<p><span data-pos>${posOnLang[0]}</span>: ${lat}</p>
+  <p><span data-pos>${posOnLang[1]}</span>: ${lng}</p>`;
+  const tempCountry = `<span data-country>${city}, ${country}</span>`;
+  const tempTime = `<span data-time>${timeNow}</span>`;
+
+  document.querySelector('.search').placeholder = inputPlaceholder;
   blockInfoCords.innerHTML = temp;
   infoCountry.innerHTML = tempCountry;
   blockTimeStamp.innerHTML = tempTime;
