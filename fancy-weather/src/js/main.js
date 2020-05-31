@@ -5,7 +5,6 @@ import { restoreLang } from './restoreLang';
 import { changeUnit } from './changeUnit';
 import { findCountry } from './findCountry';
 import { translateInfo } from './translateInfo';
-import { changeInfo } from './changeInfo';
 
 export const accessKeyImg = 'OAUOq7MLCCJIn1ifqbPUopNrq5Ebmzl6e2XB0R4kjwU';
 // export const accessKeyImg = 'OAUOq7MLCCJIn1ifqbPUopNrq5Ebmzl6e0R4kjwU'; // wrong key for checking

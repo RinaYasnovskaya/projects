@@ -1,5 +1,6 @@
 import { getCountry } from "./getCountry";
 import { mainProperties } from "./main";
+import { editCoords } from "./editCoords";
 import { changeTime } from "./changeTime";
 import { translateWords } from "./translateWords";
 import { nameOfPositionCoords, inputOtherLang } from "./constantsForTranslation";
@@ -14,8 +15,8 @@ export const changeInfo = async () => {
     const infoCountry = document.querySelector('.weather__location');
     const blockTimeStamp = document.querySelector('.weather__date');
 
-    const lat = resCountry.results[0].annotations.DMS.lat;
-    const lng = resCountry.results[0].annotations.DMS.lng;
+    const lat = editCoords(resCountry.results[0].annotations.DMS.lat);
+    const lng = editCoords(resCountry.results[0].annotations.DMS.lng);
 
     const city = resCountry.results[0].components.city || resCountry.results[0].components.town;
     const country = resCountry.results[0].components.country;
