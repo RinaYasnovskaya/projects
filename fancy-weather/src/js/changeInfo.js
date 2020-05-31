@@ -14,6 +14,7 @@ export const changeInfo = async () => {
     const blockInfoCords = document.querySelector('.map__info');
     const infoCountry = document.querySelector('.weather__location');
     const blockTimeStamp = document.querySelector('.weather__date');
+    // const button = document.querySelector('.search__button');
 
     const lat = editCoords(resCountry.results[0].annotations.DMS.lat);
     const lng = editCoords(resCountry.results[0].annotations.DMS.lng);
@@ -25,7 +26,7 @@ export const changeInfo = async () => {
     const newTime = new Date(Date.parse(timeStamp));
 
     const posOnLang = nameOfPositionCoords[curLang];
-    const inputPlaceholder = inputOtherLang[curLang];
+    const inputButton = inputOtherLang[curLang];
 
     const dateNow = await translateWords(timeStamp.toString().substring(0, 16), curLang);
 
@@ -36,7 +37,8 @@ export const changeInfo = async () => {
     const tempTime = `<span data-time>${dateNow}</span>
     <span data-changeTime>${newTime.toString().substring(16, 25)}</span>`;
 
-    document.querySelector('.search').placeholder = inputPlaceholder;
+    document.querySelector('.search').placeholder = inputButton[0];
+    document.querySelector('.search__button').textContent = inputButton[1];
     blockInfoCords.innerHTML = temp;
     infoCountry.innerHTML = tempCountry;
     blockTimeStamp.innerHTML = tempTime;

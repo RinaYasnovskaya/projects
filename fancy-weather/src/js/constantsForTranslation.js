@@ -4,9 +4,9 @@ export const nameOfPositionCoords = {
   'be': ['Шырата', 'Даўгата']
 };
 export const inputOtherLang = {
-  'en': 'Search city or ZIP',
-  'ru': 'Найти город или координаты',
-  'be': 'Знайсці горад ці індэкс'
+  'en': ['Search city or ZIP', 'Search'],
+  'ru': ['Найти город или координаты', 'Поиск'],
+  'be': ['Знайсці горад ці індэкс', 'Пошук']
 };
 
 export const daysOtherLang = {

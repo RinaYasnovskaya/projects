@@ -10,6 +10,7 @@ export const translateInfo = async (lang) => {
   const nextDayToTranslate = document.querySelectorAll('[data-day]');
   const posToTranslate = document.querySelectorAll('[data-pos]');
   const inputToTranslate = document.querySelector('.search');
+  const button = document.querySelector('.search__button');
 
   const infoReady = infoOtherLang[lang];
   const dayReady = daysOtherLang[lang];
@@ -29,7 +30,8 @@ export const translateInfo = async (lang) => {
   posToTranslate.forEach((elem, index) => {
     elem.textContent = posReady[index];
   })
-  inputToTranslate.placeholder = inputReady;
+  inputToTranslate.placeholder = inputReady[0];
+  button.textContent = inputReady[1];
   countryToTranslate.textContent = countryReady;
   dateToTranslate.textContent = dateReady;
   descriptionToTranslate.textContent = descriptionReady;
