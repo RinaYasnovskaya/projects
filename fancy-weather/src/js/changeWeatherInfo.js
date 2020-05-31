@@ -9,7 +9,6 @@ export const changeWeatherInfo = async () => {
   const coords = mainProperties.getCoords();
   const currLang = mainProperties.getLang();
   const arrWeather = await getWeather(coords);
-  console.log('weather:', arrWeather);
   if (arrWeather) { 
     const today = document.querySelector('.weather__today-info');
     const next = document.querySelector('.weather__next');
@@ -54,5 +53,5 @@ export const changeWeatherInfo = async () => {
     next.innerHTML = tempNextDays;
   }
 
-  // changeBackground();
+  changeBackground();
 };

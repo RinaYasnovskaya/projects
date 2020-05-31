@@ -1,7 +1,6 @@
 import { mainProperties } from './main';
 
 export const restoreLang = () => {
-  console.log(localStorage);
   if (localStorage.getItem('lang')) {
     mainProperties.setLang(localStorage.getItem('lang'));
     const lang = mainProperties.getLang();

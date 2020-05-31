@@ -1,7 +1,4 @@
-import { changeInfo } from './changeInfo';
-import { changeWeatherInfo } from './changeWeatherInfo';
 import { translateWords } from './translateWords';
-import { mainProperties, weatherApiKey } from './main';
 import { daysOtherLang, infoOtherLang, nameOfPositionCoords, inputOtherLang } from './constantsForTranslation';
 
 export const translateInfo = async (lang) => {
