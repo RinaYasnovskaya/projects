@@ -3,9 +3,13 @@
 @import './abstract/vars';
 @import './abstract/reset';
 
-// base
-
-// components
-
 // layouts
 @import './layouts/base';
+@import './layouts/main';
+
+// base
+@import './base/form';
+@import './base/button';
+
+// components
+@import './components/start-section';
