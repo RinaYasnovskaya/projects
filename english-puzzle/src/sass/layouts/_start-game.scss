@@ -1,0 +1,18 @@
+.start-game{
+  height: 40rem;
+  color: $color-main-text;
+  text-align: center;
+  padding-top: 10rem;
+  h1{
+    font-size: 4rem;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+  }
+  p{
+    font-size: 2.4rem;
+  }
+  &__block-button{
+    width: 20rem;
+    margin: 2rem auto;
+  }
+}

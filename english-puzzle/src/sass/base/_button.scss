@@ -11,4 +11,8 @@
   color: $color-main-text;
   background-color: $color-button;
   margin-top: 2.3rem;
+  &__start{
+    font-size: 1.8rem;
+    height: 4.5rem;
+  }
 }
