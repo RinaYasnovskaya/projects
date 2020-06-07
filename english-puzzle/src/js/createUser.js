@@ -1,7 +1,6 @@
-import { globalUser } from './main';
 import { saveUser } from "./saveUser";
 
-export const createUser = async (user) => {
+export const createUser = async (user, count, globalUser) => {
   const response = await fetch('https://afternoon-falls-25894.herokuapp.com/users', {
     method: 'POST',
     headers: {
@@ -11,6 +10,7 @@ export const createUser = async (user) => {
     body: JSON.stringify(user)
   });
   const content = await response.json();
-  globalUser.id = content.id;
+  globalUser[count].id = content.id;
+  console.log(content, globalUser)
   saveUser();
 };

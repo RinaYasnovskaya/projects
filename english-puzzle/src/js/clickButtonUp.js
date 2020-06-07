@@ -1,6 +1,8 @@
 import { globalUser } from './main';
 import { createUser } from "./createUser";
 
+let countUser = 0;
+
 export const clickButtonUp = () => {
   const nextButton = document.querySelector('.click-reload');
   const errorBlock = document.querySelector('.error-block');
@@ -9,17 +11,13 @@ export const clickButtonUp = () => {
     event.preventDefault();
     const password = document.querySelector('[name="password-up"]').value;
     const reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[+-_@$!%*?&#.,;:[\]{}]).{8,}$/;
-    console.log(reg.test(password), password);
     if (reg.test(password)) {
       const login = document.querySelector('[name="email"]').value;
+      const user = {email: login, password: password};
+      globalUser.push({email: login, password: password, id: null});
+      createUser(user, countUser, globalUser);
+      countUser += 1;
       nextButton.click();
-      const user = {
-        email: login,
-        password: password
-      };
-      globalUser.email = login;
-      globalUser.password = password;
-      createUser(user);
     }
     else {
       errorBlock.innerHTML = `

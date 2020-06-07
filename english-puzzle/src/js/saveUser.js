@@ -1,5 +1,6 @@
 import { globalUser } from './main';
 
 export const saveUser = () => {
-  localStorage.setItem('user', globalUser);
+  const json = JSON.stringify(globalUser);
+  localStorage.setItem('user', json);
 };

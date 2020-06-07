@@ -3,12 +3,10 @@ import { createHomePage } from './createHomePage';
 import { createStartPage } from './createStartPage';
 import { createErrorPage } from './createErrorPage';
 import { clickButtonUp } from './clickButtonUp';
+import { loadUser } from './loadUser';
+import { clickButtonIn } from './clickButtonIn';
 
-export const globalUser = {
-  email: null,
-  password: null,
-  id: null
-}
+export let globalUser = [];
 
 const HomeComponent = {
   render: () => {
@@ -20,15 +18,27 @@ const StartComponent = {
     return createStartPage();
   }
 }
+const GameComponent = {
+  render: () => {
+    return createGamePage();
+  }
+}
 const ErrorComponent = {
   render: () => {
     return createErrorPage();
   }
 }
 
+const createGamePage = () => {
+  return `
+    <p>Hello</p>
+  `;
+}
+
 const routes = [
   { path: '/', component: HomeComponent, },
   { path: '/start', component: StartComponent, },
+  { path: '/game', component: GameComponent, },
 ];
 
 const parseLocation = () => {
@@ -46,7 +56,10 @@ const router = () => {
 
 window.addEventListener('hashchange', router);
 window.onload = () => {
+  globalUser = loadUser();
   router();
   controlForm();
   clickButtonUp();
+  clickButtonIn();
+  console.log(globalUser);
 }

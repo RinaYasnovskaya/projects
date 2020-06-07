@@ -4,8 +4,8 @@ export const createHomePage = () => {
         <div class="start-enter__inner">
           <nav class="start-enter__nav">
             <ul class="start-enter__nav-links">
-              <li class="sign sign__in animation active"><a class="control">Sign in</a></li>
-              <li class="sign sign__up animation inactive"><a class="control">Sign up</a></li>
+              <li class="sign sign__in animation active"><a class="control control-in">Sign in</a></li>
+              <li class="sign sign__up animation inactive"><a class="control control-up">Sign up</a></li>
             </ul>
           </nav>
           <div>
