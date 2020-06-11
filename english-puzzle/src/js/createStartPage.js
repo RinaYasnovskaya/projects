@@ -1,6 +1,7 @@
 export const createStartPage = () => {
   return `<section class="inner-section__start">
     <div class="start-enter">
+      <button>Log Out</button>
       <div class="start-game">
         <h1>English Puzzle </h1>
         <p>Click on words, collect phrases. </p>

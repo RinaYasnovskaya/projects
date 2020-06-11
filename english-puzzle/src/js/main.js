@@ -7,6 +7,7 @@ import { loadUser } from './loadUser';
 import { clickButtonIn } from './clickButtonIn';
 
 export let globalUser = [];
+const isAuth = true;
 
 const HomeComponent = {
   render: () => {
@@ -49,17 +50,32 @@ const findComponentByPath = (path, routes) => {
 } 
 
 const router = () => {
+  if (isAuth) {
+    document.querySelector('.click-enter').click();
+  }
   const path = parseLocation();
   const { component = ErrorComponent } = findComponentByPath(path, routes) || {};
   document.getElementById('main').innerHTML = component.render();
+  
+  switch(path) {
+    case '/': {
+      controlForm();
+      clickButtonUp();
+      clickButtonIn();
+    }
+    case '/start': {
+
+    }
+    case '/game': {
+
+    }
+  }
 };
 
 window.addEventListener('hashchange', router);
 window.onload = () => {
   globalUser = loadUser();
   router();
-  controlForm();
-  clickButtonUp();
-  clickButtonIn();
+  
   console.log(globalUser);
 }

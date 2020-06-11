@@ -14,7 +14,8 @@ export const createHomePage = () => {
   <input required autocomplete="disabled" class="form__styling sign-in__login" type="e-mail" name="login" placeholder=""/>
               <label for="password">Password</label>
 <input required autocomplete="disabled" class="form__styling sign-in__pass" type="password" name="password-in" placeholder=""/>
-             <button class="button">Sign in</button>
+              <div class="error-block"></div>             
+              <button class="button">Sign in</button>
             </form>
             <form class="form form__sign-up" action="" method="post" name="form" data-up>
               <label for="email">Email</label>
