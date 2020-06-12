@@ -14,7 +14,7 @@ export const clickButtonUp = () => {
     if (reg.test(password)) {
       const login = document.querySelector('[name="email"]').value;
       const user = {email: login, password: password};
-      globalUser.push({email: login, password: password, id: null});
+      globalUser.push({email: login, password: password, id: null, token: null});
       createUser(user, countUser, globalUser);
       countUser += 1;
       nextButton.click();

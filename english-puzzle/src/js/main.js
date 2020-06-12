@@ -4,10 +4,20 @@ import { createStartPage } from './createStartPage';
 import { createErrorPage } from './createErrorPage';
 import { clickButtonUp } from './clickButtonUp';
 import { loadUser } from './loadUser';
-import { clickButtonIn } from './clickButtonIn';
+import { clickButtonIn} from './clickButtonIn';
+import { clickLogOut } from './clickLogOut';
+import { loadAuth } from './loadAuth';
 
 export let globalUser = [];
-const isAuth = true;
+
+export const actionAuth = {
+  setAuth(auth) {
+    this._isAuth = auth;
+  },
+  getAuth() {
+    return this._isAuth;
+  },
+};
 
 const HomeComponent = {
   render: () => {
@@ -50,13 +60,15 @@ const findComponentByPath = (path, routes) => {
 } 
 
 const router = () => {
-  if (isAuth) {
+  const isAuth = actionAuth.getAuth();
+  if (isAuth === 'true') {
     document.querySelector('.click-enter').click();
   }
+
   const path = parseLocation();
   const { component = ErrorComponent } = findComponentByPath(path, routes) || {};
   document.getElementById('main').innerHTML = component.render();
-  
+
   switch(path) {
     case '/': {
       controlForm();
@@ -64,16 +76,17 @@ const router = () => {
       clickButtonIn();
     }
     case '/start': {
-
+      clickLogOut();
     }
     case '/game': {
-
+  
     }
   }
 };
 
 window.addEventListener('hashchange', router);
 window.onload = () => {
+  loadAuth();
   globalUser = loadUser();
   router();
   

@@ -1,4 +1,6 @@
-import { globalUser } from './main';
+import { globalUser, actionAuth } from './main';
+import { saveAuth } from "./saveAuth";
+import { loginUser } from './loginUser';
 
 export const clickButtonIn = () => {
   const nextButton = document.querySelector('.click-enter');
@@ -10,7 +12,10 @@ export const clickButtonIn = () => {
     const existUser = globalUser.find(user => user.email === login);
     if (existUser) {
       if (existUser.password === password) {
-        console.log(existUser);
+        const user = {email: login, password: password};
+        loginUser(user, globalUser);
+        actionAuth.setAuth(true);
+        saveAuth();
         nextButton.click();
       }
       else {
