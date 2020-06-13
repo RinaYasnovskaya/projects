@@ -8,6 +8,7 @@ import { clickButtonIn} from './clickButtonIn';
 import { clickLogOut } from './clickLogOut';
 import { loadAuth } from './loadAuth';
 import { clickStart } from './clickStart';
+import { createGamePage } from './createGamePage';
 
 export let globalUser = [];
 
@@ -39,12 +40,6 @@ const ErrorComponent = {
   render: () => {
     return createErrorPage();
   }
-}
-
-const createGamePage = () => {
-  return `
-    <p>Hello</p>
-  `;
 }
 
 const routes = [
@@ -81,7 +76,7 @@ const router = () => {
       clickStart();
     }
     case '/game': {
-  
+      clickLogOut();
     }
   }
 };
@@ -91,6 +86,4 @@ window.onload = () => {
   loadAuth();
   globalUser = loadUser();
   router();
-  
-  console.log(globalUser,localStorage);
 }
