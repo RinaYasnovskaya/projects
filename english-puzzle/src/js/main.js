@@ -63,10 +63,9 @@ const findComponentByPath = (path, routes) => {
 
 const router = () => {
   const isAuth = actionAuth.getAuth();
-  if (isAuth === 'true') {
+  if (isAuth === 'true' && document.location.hash === '#/') {
     document.querySelector('.click-enter').click();
   }
-
   const path = parseLocation();
   const { component = ErrorComponent } = findComponentByPath(path, routes) || {};
   document.getElementById('main').innerHTML = component.render();
