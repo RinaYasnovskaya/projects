@@ -90,5 +90,5 @@ window.onload = () => {
   globalUser = loadUser();
   router();
   
-  console.log(globalUser);
+  console.log(globalUser,localStorage);
 }

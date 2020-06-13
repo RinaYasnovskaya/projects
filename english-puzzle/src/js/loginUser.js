@@ -1,7 +1,6 @@
 import { saveUser } from './saveUser';
 
 export const loginUser = async (user, globalUser) => {
-  try {
     const rawResponse = await fetch('https://afternoon-falls-25894.herokuapp.com/signin', {
       method: 'POST',
       headers: {
@@ -10,18 +9,15 @@ export const loginUser = async (user, globalUser) => {
       },
       body: JSON.stringify(user)
     });
-    if (response.Response && response.Response.status !== correctStatus) {
-      throw new Error;
-    }
     const content = await rawResponse.json();
     globalUser.forEach((elem) => {
       if (elem.email === user.email) {
-        elem.token = content.token;
+        if (content.token) {
+          elem.token = content.token;
+        } else {
+          console.log('err');
+        }
       }
     });
     saveUser();
-  }
-  catch (err) {
-    alert('Application error. Try later');
-  }
 };
