@@ -7,6 +7,7 @@ import { loadUser } from './loadUser';
 import { clickButtonIn} from './clickButtonIn';
 import { clickLogOut } from './clickLogOut';
 import { loadAuth } from './loadAuth';
+import { clickStart } from './clickStart';
 
 export let globalUser = [];
 
@@ -55,6 +56,7 @@ const routes = [
 const parseLocation = () => {
   return document.location.hash.slice(1).toLowerCase() || '/';
 }
+
 const findComponentByPath = (path, routes) => {
   return routes.find(r => r.path.match(new RegExp(`^\\${path}$`, 'gm'))) || undefined;
 } 
@@ -77,6 +79,7 @@ const router = () => {
     }
     case '/start': {
       clickLogOut();
+      clickStart();
     }
     case '/game': {
   
